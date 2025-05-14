@@ -1,6 +1,7 @@
 // App.jsx
 import React from 'react';
-import Home from './pages/home'; // A helyes útvonal a Home komponenshez
+import Home from './pages/Home'
+
 
 function App() {
   return (
