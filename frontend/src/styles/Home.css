@@ -1,0 +1,127 @@
+/* Home.css */
+body {
+  font-family: 'Poppins', sans-serif; /* Betűtípus */
+  margin: 0; /* Margin eltávolítása */
+  padding: 0; /* Padding eltávolítása */
+  height: 100%; /* A body teljes magasságot vegye fel */
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  display: flex;
+  flex-direction: column; /* Vertikális elrendezés */
+  height: 100vh; /* A szülő div teljes magasságot töltse ki */
+}
+
+section {
+  flex: 1; /* Minden szekció egyenlő részt kap */
+  display: flex; /* Flexbox a szekción belül */
+  justify-content: center; /* A tartalom vízszintesen középre igazítása */
+  align-items: center; /* A tartalom függőlegesen középre igazítása */
+  text-align: center; /* A szöveg középre igazítása */
+  border: 2px solid #ffffff;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Háttérszínek */
+section:nth-child(1) {
+  background-color: #000000;
+}
+
+section:nth-child(2) {
+  background-color: #000000;
+}
+
+section:nth-child(3) {
+  background-color: #000000;
+}
+
+section:nth-child(4) {
+  background-color: #000000;
+}
+
+section:nth-child(5) {
+  background-color: #000000;
+}
+
+/* Responsív stílusok */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem; /* Kisebb képernyőn kisebb betűméret */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem; /* Még kisebb képernyőn még kisebb betűméret */
+  }
+}
+
+/* Popup overlay (háttér sötétítés) */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Sötét háttér */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* A pop-up mindig a tetején legyen */
+}
+
+/* Pop-up box */
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 70%;       /* A szélesség 70%-ra van állítva */
+  max-width: 800px; /* Maximális szélesség 800px */
+  min-height: 400px; /* Minimum magasság 400px */
+  height: auto;      /* Magasság automatikusan áll be a tartalom alapján */
+  text-align: center;
+}
+
+/* A jegyzet szövege */
+.popup-content {
+  max-height: 400px;
+  overflow-y: auto; /* Görgethető, ha a tartalom túl nagy */
+  text-align: left; /* A szöveg balra igazítása */
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Popup fejléce */
+.popup h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+/* Bezáró gomb */
+.popup button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup button:hover {
+  background-color: #555;
+}
+
+
+
