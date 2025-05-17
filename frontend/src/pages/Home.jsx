@@ -442,6 +442,127 @@ Most próbáljuk ki az alkalmazást az alábbi parancs futtatásával:
 Ezután kipróbálhatod a végpontokat és a szabályokat.
 
 <p>Ha minden rendben van, a szit.hu-n elérhető jegyzetek és példák segítenek tovább!</p>
+<p>
+<h1>Saját</h1>
+<h2>JSON</h2>
+SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
+1. CMD-BEN Projekt generálás C:\Users\Diak\Desktop\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
+2. Miután a hosszas letöltés megtörtént belépünk a projekt fileba - cd *projekt neve<br>
+3. Telepítjük az apikat - C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan install:api<br>
+            Itt nem migrálunk szóval amikor kérdezi hogy migráljon akkor N betű vagyis NO<br>
+4. Itt egy code . de előtte még a .env-ben beírjuk az adatbázis nevét átírjuk a sqlite-ot mysqlre<br>
+5. Králunk egy migrációs táblát C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:migration create_rental_items_table<br>
+6. Králunk egy modelt C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:model RentalItem<br>
+7. Králunk egy seedert C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:seeder RentalItemSeeder<br>
+<p>
+5/1. A create_rental_items_table bent van a migrationsban ami így kell hogy kinézzen <br>
+<?php<br>
+<p>
+use Illuminate\Database\Migrations\Migration;<br>
+use Illuminate\Database\Schema\Blueprint;<br>
+use Illuminate\Support\Facades\Schema;<br>
+<p>
+/*<br>
+    "ID": "1",<br>
+        "Name": "Valami",<br>
+        "Type": "Szett",<br>
+        "Status": "Új",<br>
+        "Notes": "Raktáron"<br>
+*/<br>
+return new class extends Migration<br>
+{<br>
+    /**<br>
+     * Run the migrations.<br>
+     */<br>
+    public function up(): void<br>
+    {<br>
+        Schema::create('rental_items', function (Blueprint $table) {<br>
+            $table->id();<br>
+            $table->string("Name");<br>
+            $table->string("Type");<br>
+            $table->string("Status");<br>
+            $table->string("Notes");<br>
+            $table->timestamps();<br>
+        });<br>
+    }<br>
+<p>
+    /**<br><br>
+     * Reverse the migrations.<br>
+     */<br>
+    public function down(): void<br>
+    {<br>
+        Schema::dropIfExists('rental_items');<br>
+    }<br>
+};<br>
+<p>
+6/1. A rentalitem model így kell hogy kinézzen <br>
+<?php<br>
+<p>
+namespace App\Models;<br>
+<p>
+use Illuminate\Database\Eloquent\Model;<br>
+<p>
+class RentalItem extends Model<br>
+{<br>
+    protected $fillable = [<br>
+        "name","type","status","notes"<br>
+    ];<br>
+}<br>
+<p>
+7/1. A rentalitemseeder így kell hogy kinézzen <br>
+<?php<br>
+<p>
+namespace Database\Seeders;<br>
+<p>
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;<br>
+use Illuminate\Database\Seeder;<br>
+use App\Models\RentalItem;<br>
+use Illuminate\Support\Facades\File;<br>
+<p>
+class RentalItemSeeder extends Seeder<br>
+{<br>
+    /**<br>
+     * Run the database seeds.<br>
+     */<br>
+    public function run(): void<br>
+    {<br>
+        $json = File::get(database_path("jewelry_inventory.json"));<br>
+        $data = json_decode($json, true);<br>
+<p>
+        foreach($data as $item){<br>
+<p>
+            RentalItem::create($item);<br>
+        }<br>
+    }<br>
+}<br>
+<p>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>
+<p>
+A databaseseederben is ezt kell megírni <br>
+<?php<br>
+<p>
+namespace Database\Seeders;<br>
+<p>
+use App\Models\User;<br>
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;<br>
+use Illuminate\Database\Seeder;<br>
+<p>
+class DatabaseSeeder extends Seeder<br>
+{<br>
+    /**<br>
+     * Seed the application's database.<br>
+     */<br>
+    public function run(): void<br>
+    {<br>
+        $this->call([<br>
+            RentalItemSeeder::class<br>
+        ]);<br>
+    }<br>
+}<br>
+<p>
+8. Miután ezek mind megvannak a migrálni kell C:\Users\Diak\Desktop\_20250312\_0409\VizsgaGyakorlo>php artisan migrate ezzel létrejön az adatbázis<br>
+9. De az adatbázist fel kell tölteni adattal ahhoz viszont alapvető dolog hogy a JSON formátumú file legyen a database könyvtárban és ezt adjuk le C:\Users\Diak\Desktop\_20250312\_0409\VizsgaGyakorlo>php artisan db:seed<br>
+<p>
 
   `,
 
