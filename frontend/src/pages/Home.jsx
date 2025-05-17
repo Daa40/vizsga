@@ -9,7 +9,8 @@ const Home = () => {
   const notes = {
     Frontend: "Még nincs jegyzet.",
     Backend: `
-<h2>Backend JSON</h2>
+<h2>Backend JSON</h2><br>
+Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel JsonUpdate</pre>
 <p>
@@ -116,7 +117,8 @@ class DatabaseSeeder extends Seeder
 <h3>7. Futtasd a seeder-t:</h3>
 <pre>php artisan db:seed</pre>
 
-<h2>Backend jegyzet 2</h2>
+<h2>Backend jegyzet 2</h2><br>
+Link:https://drive.google.com/file/d/1rtchoZVqW3OEIk3-yEYtGI_yJRaeKXhv/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel Vizsgagyak02</pre>
 
@@ -248,7 +250,8 @@ class Car extends Model
 
 21. Teszteld az API-t Insomniában!
 <p>
-<h2>Backend Offices 1</h2>
+<h2>Backend Offices 1</h2><br>
+Link:https://drive.google.com/file/d/1FvQUzPoQS4_veDf_XPwH9X7xunBsEZaV/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel Office</pre>
 
@@ -329,7 +332,8 @@ public function authorize()<br>
 
 <p>Ez a lépés nagyon fontos, mert különben hibát kapsz.</p>
 
-<h2>Backend Offices 2</h2>
+<h2>Backend Offices 2</h2><br>
+Link:https://drive.google.com/file/d/1Adc22sCquLqn70lnaJ0ctzTE385iqN8p/view?usp=sharing<br>
 Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 
 <pre>composer create-project laravel/laravel Office</pre>
@@ -443,8 +447,9 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 
 <p>Ha minden rendben van, a szit.hu-n elérhető jegyzetek és példák segítenek tovább!</p>
 <p>
-<h1>Saját</h1>
-<h2>JSON</h2>
+<h2>Saját</h2>
+<h2>JSON</h2><br>
+Link:https://drive.google.com/file/d/1JmnsgVKVMAngOKN7Tp7821v-GV5YD4K-/view?usp=sharing<br>
 SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
 1. CMD-BEN Projekt generálás C:\Users\Diak\Desktop\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
 2. Miután a hosszas letöltés megtörtént belépünk a projekt fileba - cd *projekt neve<br>
@@ -567,7 +572,7 @@ class DatabaseSeeder extends Seeder<br>
   `,
 
     Console: `<h2>Console 1</h2><br>1. Console App (nem .NET Framework-ös)<br>
-    
+    Link:https://drive.google.com/file/d/1A1WB98vKResLPJBvf2idbTwRFgwVNqXv/view?usp=sharing<br>
     Be kell pipálni, hogy sima projekt legyen. Don't use Top level Statements<br>
     <p>
     2. Data mappát kell csinálni a projekten belül és belehúzni a .csv fájlokat Drag and Drop-pal.
@@ -660,7 +665,8 @@ class DatabaseSeeder extends Seeder<br>
     var avgRentals = berlesek.Select(b => (b.EndDate - b.StartDate).Days + 1).Average();<br>
     Console.WriteLine($"Átlagos bérlési időtartam: {avgRentals:F2} nap");<br>
     <p>
-    <h2>Console 2</h2>
+    <h2>Console 2</h2><br>
+    Link:https://drive.google.com/file/d/1dF-yYiCEBgSHLGeU3oEx-fMCnjc42aRx/view?usp=sharing<br>
         1. Console App (nem .NET Framework-ös)<br>
     Be kell pipálni, hogy sima projekt legyen. Don't use Top level Statements<br>
     <p>
@@ -786,6 +792,7 @@ class DatabaseSeeder extends Seeder<br>
     `,
     Desktop: `
     <h2>Asztalis alkalmazás</h2><br>
+    Link:https://drive.google.com/file/d/1Imqp3dX2njWmYsBbnYegldfhjfRpKnlZ/view?usp=sharing<br>
     1. Windows Forms App (.Net Framework nélkül)<br>
     <p>
     2. Átírni az ablak nevét. Jobb gomb az ablakon, Properties -> Text
