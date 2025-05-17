@@ -7,7 +7,7 @@ const Home = () => {
 
   // Jegyzetek hozzáadása
   const notes = {
-    Frontend: "Még nincs jegyzet.",
+    Frontend: "Link:https://drive.google.com/drive/folders/1LyHedkTpP6i1Kgeb_n0WqiphJOdlH-Al?usp=sharing",
     Backend: `
 <h2>Backend JSON</h2><br>
 Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
@@ -571,8 +571,9 @@ class DatabaseSeeder extends Seeder<br>
 
   `,
 
-    Console: `<h2>Console 1</h2><br>1. Console App (nem .NET Framework-ös)<br>
+    Console: `<h2>Console 1</h2><br>
     Link:https://drive.google.com/file/d/1A1WB98vKResLPJBvf2idbTwRFgwVNqXv/view?usp=sharing<br>
+    1. Console App (nem .NET Framework-ös)<br>
     Be kell pipálni, hogy sima projekt legyen. Don't use Top level Statements<br>
     <p>
     2. Data mappát kell csinálni a projekten belül és belehúzni a .csv fájlokat Drag and Drop-pal.
