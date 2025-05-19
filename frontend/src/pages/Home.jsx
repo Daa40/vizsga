@@ -854,173 +854,69 @@ class DatabaseSeeder extends Seeder<br>
     Ezzel beolvassuk a fájlt, és megjelenítjük a combobox-ban a rendszámokat.
     </p>
   `,
-    Weboldal: `<h2>Weboldal</h2><br>
-//     Ehhez a feladatot HTML-t CSS-t és Bootstrap-et szeretnék használni kizárólag.<br>
-// <p>
-// 1. Nyitunk egy VS Code-t, kell egy index.html és a bootstrap 5-ből a Starter Template.<br>
-// 2. Az első elem egy navbar lesz.<br>
-// Ebből kiszedjük azokat, amik nem kellenek.<br>
-// <p>
-// 3. Majd a navbar után belemásoljuk ezt is az index.html-be:<br>
-// <p>
-// <div class="container"><br>
-//     <div class="row my-5"><br>
-//         <div class="col-12 col-md-6 mb-3"><br>
-//             <p class="cim display-4">The Best</p> <br>
-//             <p class="cim fw-bold display-4">Private Office Experience, Luxury in the City.</p><br>
-//             <p class="cim green fw-bold display-4">GlobalSpaces</p><br>
-//             <p class="d-none d-lg-block lead"><br>
-//                 GlobalSpaces brings you the magic of premium private office experiences!<br>
-//                 We all know the chaos that comes with crowded co-working spaces and the hassle of finding suitable meeting rooms – endless hours spent on bookings, logistics, and compromises.<br>
-//                 Why not choose complete freedom and comfort instead?<br>
-//                 Enjoy your own private office space with your team, clients, or partners – the true meaning of professional productivity and peace of mind.<br>
-//             </p><br>
-//         </div><br>
-//         <div class="col-12 col-md-6"><br>
-//             <img src="/assets/office1.jpg" class="img-fluid" alt="Office Space 1"><br>
-//         </div><br>
-//     </div><br>
-// <p>
-//     <div class="row my-5"><br>
-//         <div class="col-12 col-md-6 order-2 order-md-1"><br>
-//             <img src="/assets/office2.jpg" class="img-fluid" alt="Office Space 2"><br>
-//         </div><br>
-//         <div class="box col-12 col-md-6 order-1"><br>
-//             <h2>About Us</h2><br>
-//             <h5>GlobalSpaces – Redefining Office Rentals</h5><br>
-//             <p class="lead"><br>
-//                 GlobalSpaces embodies modern luxury and flexibility in workspace solutions.<br>
-//                 Our network features meticulously selected, world-class office spaces, offering the perfect environment for daily work, corporate events, client meetings, or project collaborations.<br>
-//                 Whether you're looking for a short-term spot or a long-term base, you'll find the ideal office with us – complete with personalized services, premium facilities, and professional support.<br>
-//                 Experience unlimited productivity and maximum comfort with GlobalSpaces.<br>
-//             </p><br>
-//         </div><br>
-//     </div><br>
-// <p>
-//     <div class="row my-5"><br>
-//         <div class="box col-12 col-md-6"><br>
-//             <h2>Offices</h2><br>
-//             <h5>The World's Finest Offices for Your Perfect Workdays</h5><br>
-//             <p class="lead"><br>
-//                 Our collection of office spaces perfectly blends modern design and professional elegance.<br>
-//                 Whether you seek sleek private offices, dynamic co-working areas, or prestigious corporate suites – we offer a wide selection to meet every business need.<br>
-//                 Our offices feature the latest technology, spacious workstations, meeting rooms, relaxation zones, and premium amenities.<br>
-//                 Let our expert team help you find the perfect office space to make every workday truly exceptional!<br>
-//             </p><br>
-//         </div><br>
-//         <div class="col-12 col-md-6"><br>
-//             <img src="/assets/office3.png" class="img-fluid" alt="Office Space 3"><br>
-//         </div><br>
-//     </div><br>
-// </div><br>
-// <h2>Sajat weboldal</h2><br>
-// <p>
-// <!DOCTYPE html><br>
-// <html lang="hu"><br>
-// <head><br>
-//   <meta charset="UTF-8"><br>
-//   <meta name="viewport" content="width=device-width, initial-scale=1"><br>
-//   <title>GlobalSpaces – Premium Office Experience</title><br>
-//   <!-- Bootstrap CSS --><br>
-//   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><br>
-//   <!-- Egyéni stílus (opcionális) --><br>
-//   <style><br>
-//     .green {<br>
-//       color: #28a745;<br>
-//     }<br>
-//     .box {<br>
-//       padding: 20px;<br>
-//     }<br>
-//     .cim {<br>
-//       margin-bottom: 0.5rem;<br>
-//     }<br>
-//   </style><br>
-// </head><br>
-// <body><br>
-// <p>
-//   <!-- Navigáció --><br>
-//   <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><br>
-//     <div class="container-fluid"><br>
-//       <a class="navbar-brand" href="#">GlobalSpaces</a><br>
-//       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><br>
-//         <span class="navbar-toggler-icon"></span><br>
-//       </button><br>
-//       <div class="collapse navbar-collapse" id="navbarNav"><br>
-//         <ul class="navbar-nav ms-auto"><br>
-//           <li class="nav-item"><br>
-//             <a class="nav-link active" href="#">Főoldal</a><br>
-//           </li><br>
-//           <li class="nav-item"><br>
-//             <a class="nav-link" href="#">Rólunk</a><br>
-//           </li><br>
-//           <li class="nav-item"><br>
-//             <a class="nav-link" href="#">Kapcsolat</a><br>
-//           </li><br>
-//         </ul><br>
-//       </div><br>
-//     </div><br>
-//   </nav><br>
-// <p>
-//   <!-- Fő Tartalom --><br>
-//   <div class="container"><br>
-//     <!-- Szekció 1 --><br>
-//     <div class="row my-5"><br>
-//       <div class="col-12 col-md-6 mb-3"><br>
-//         <p class="cim display-4">The Best</p> <br>
-//         <p class="cim fw-bold display-4">Private Office Experience, Luxury in the City.</p><br>
-//         <p class="cim green fw-bold display-4">GlobalSpaces</p><br>
-//         <p class="d-none d-lg-block lead"><br>
-//           GlobalSpaces brings you the magic of premium private office experiences!<br>
-//           We all know the chaos that comes with crowded co-working spaces and the hassle of finding suitable meeting rooms – endless hours spent on bookings, logistics, and compromises.<br>
-//           Why not choose complete freedom and comfort instead?<br>
-//           Enjoy your own private office space with your team, clients, or partners – the true meaning of professional productivity and peace of mind.<br>
-//         </p><br>
-//       </div><br>
-//       <div class="col-12 col-md-6"><br>
-//         <img src="/assets/office1.jpg" class="img-fluid" alt="Office Space 1"><br>
-//       </div><br>
-//     </div><br>
-// <p>
-//     <!-- Szekció 2 --><br>
-//     <div class="row my-5"><br>
-//       <div class="col-12 col-md-6 order-2 order-md-1"><br>
-//         <img src="/assets/office2.jpg" class="img-fluid" alt="Office Space 2"><br>
-//       </div><br>
-//       <div class="box col-12 col-md-6 order-1"><br>
-//         <h2>About Us</h2><br>
-//         <h5>GlobalSpaces – Redefining Office Rentals</h5><br>
-//         <p class="lead"><br>
-//           GlobalSpaces embodies modern luxury and flexibility in workspace solutions.<br>
-//           Our network features meticulously selected, world-class office spaces, offering the perfect environment for daily work, corporate events, client meetings, or project collaborations.<br>
-//           Whether you're looking for a short-term spot or a long-term base, you'll find the ideal office with us – complete with personalized services, premium facilities, and professional support.<br>
-//           Experience unlimited productivity and maximum comfort with GlobalSpaces.<br>
-//         </p><br>
-//       </div><br>
-//     </div><br>
-// <p>
-//     <!-- Szekció 3 --><br>
-//     <div class="row my-5"><br>
-//       <div class="box col-12 col-md-6"><br>
-//         <h2>Offices</h2><br>
-//         <h5>The World's Finest Offices for Your Perfect Workdays</h5><br>
-//         <p class="lead"><br>
-//           Our collection of office spaces perfectly blends modern design and professional elegance.<br>
-//           Whether you seek sleek private offices, dynamic co-working areas, or prestigious corporate suites – we offer a wide selection to meet every business need.<br>
-//           Our offices feature the latest technology, spacious workstations, meeting rooms, relaxation zones, and premium amenities.<br>
-//           Let our expert team help you find the perfect office space to make every workday truly exceptional!<br>
-//         </p><br>
-//       </div><br>
-//       <div class="col-12 col-md-6"><br>
-//         <img src="/assets/office3.png" class="img-fluid" alt="Office Space 3"><br>
-//       </div><br>
-//     </div><br>
-//   </div><br>
-// <p>
-//   <!-- Bootstrap JS Bundle --><br>
-//   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><br>
-// </body><br>
-// </html><br>
-    `
+  Weboldal: `
+    <h2>Weboldal</h2>
+<p>Ehhez a feladatot HTML-t CSS-t és Bootstrap-et szeretnék használni kizárólag.</p>
+
+<pre><code>
+1. Nyitunk egy VS Code-t, kell egy index.html és a bootstrap 5-ből a Starter Template.
+2. Az első elem egy navbar lesz.
+   Ebből kiszedjük azokat, amik nem kellenek.
+3. Majd a navbar után belemásoljuk ezt is az index.html-be:
+</code></pre>
+
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="row my-5"&gt;
+        &lt;div class="col-12 col-md-6 mb-3"&gt;
+            &lt;p class="cim display-4"&gt;The Best&lt;/p&gt; 
+            &lt;p class="cim fw-bold display-4"&gt;Private Office Experience, Luxury in the City.&lt;/p&gt;
+            &lt;p class="cim green fw-bold display-4"&gt;GlobalSpaces&lt;/p&gt;
+            &lt;p class="d-none d-lg-block lead"&gt;
+                GlobalSpaces brings you the magic of premium private office experiences!
+                We all know the chaos that comes with crowded co-working spaces and the hassle of finding suitable meeting rooms – endless hours spent on bookings, logistics, and compromises.
+                Why not choose complete freedom and comfort instead?
+                Enjoy your own private office space with your team, clients, or partners – the true meaning of professional productivity and peace of mind.
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-12 col-md-6"&gt;
+            &lt;img src="/assets/office1.jpg" class="img-fluid" alt="Office Space 1"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row my-5"&gt;
+        &lt;div class="col-12 col-md-6 order-2 order-md-1"&gt;
+            &lt;img src="/assets/office2.jpg" class="img-fluid" alt="Office Space 2"&gt;
+        &lt;/div&gt;
+        &lt;div class="box col-12 col-md-6 order-1"&gt;
+            &lt;h2&gt;About Us&lt;/h2&gt;
+            &lt;h5&gt;GlobalSpaces – Redefining Office Rentals&lt;/h5&gt;
+            &lt;p class="lead"&gt;
+                GlobalSpaces embodies modern luxury and flexibility in workspace solutions.
+                Our network features meticulously selected, world-class office spaces, offering the perfect environment for daily work, corporate events, client meetings, or project collaborations.
+                Whether you're looking for a short-term spot or a long-term base, you'll find the ideal office with us – complete with personalized services, premium facilities, and professional support.
+                Experience unlimited productivity and maximum comfort with GlobalSpaces.
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row my-5"&gt;
+        &lt;div class="box col-12 col-md-6"&gt;
+            &lt;h2&gt;Offices&lt;/h2&gt;
+            &lt;h5&gt;The World's Finest Offices for Your Perfect Workdays&lt;/h5&gt;
+            &lt;p class="lead"&gt;
+                Our collection of office spaces perfectly blends modern design and professional elegance.
+                Whether you seek sleek private offices, dynamic co-working areas, or prestigious corporate suites – we offer a wide selection to meet every business need.
+                Our offices feature the latest technology, spacious workstations, meeting rooms, relaxation zones, and premium amenities.
+                Let our expert team help you find the perfect office space to make every workday truly exceptional!
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-12 col-md-6"&gt;
+            &lt;img src="/assets/office3.png" class="img-fluid" alt="Office Space 3"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+`
   };
 
   const handleClick = (section) => {
