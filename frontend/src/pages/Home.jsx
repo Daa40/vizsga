@@ -7,7 +7,21 @@ const Home = () => {
 
   // Jegyzetek hozzáadása
   const notes = {
-    Frontend: "Link:https://drive.google.com/drive/folders/1LyHedkTpP6i1Kgeb_n0WqiphJOdlH-Al?usp=sharing<br>Link2:https://drive.google.com/drive/folders/1gwYNK2piM8700QsOQZcuZR_Q8Z7_Akwp?usp=sharing",
+    Frontend: `Link:https://drive.google.com/drive/folders/1LyHedkTpP6i1Kgeb_n0WqiphJOdlH-Al?usp=sharing<br>
+    Link2:https://drive.google.com/drive/folders/1gwYNK2piM8700QsOQZcuZR_Q8Z7_Akwp?usp=sharing
+    ng n FoodWebshop --standalone=false<br>
+    cd FoodWebshop<br>
+    ng g c login<br>
+    ng g c shop<br>
+    ng g c products<br>
+    ng g c cart<br>
+    ng g c error<br>
+   <p>
+    ng g s base<br>
+    ng add @ng-bootstrap/ng-bootstrap<br>
+    angular.json style[]=>script[] css=>json<br>
+    ng serve -o<br>
+    `,
     Backend: `
 <h2>Backend JSON</h2><br>
 Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
