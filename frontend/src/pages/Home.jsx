@@ -915,7 +915,10 @@ class DatabaseSeeder extends Seeder<br>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre>
+</code></pre><br>
+<h2>Weboldal 2</h2>
+Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
+Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0
 `
   };
 
