@@ -7,8 +7,9 @@ const Home = () => {
 
   // Jegyzetek hozzáadása
   const notes = {
-    Frontend: `Link:https://drive.google.com/drive/folders/1LyHedkTpP6i1Kgeb_n0WqiphJOdlH-Al?usp=sharing<br>
-    Link2:https://drive.google.com/drive/folders/1gwYNK2piM8700QsOQZcuZR_Q8Z7_Akwp?usp=sharing
+    Frontend: `Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
+    Link:https://drive.google.com/drive/folders/1LyHedkTpP6i1Kgeb_n0WqiphJOdlH-Al?usp=sharing<br>
+    Link2:https://drive.google.com/drive/folders/1gwYNK2piM8700QsOQZcuZR_Q8Z7_Akwp?usp=sharing<br>
     ng n FoodWebshop --standalone=false<br>
     cd FoodWebshop<br>
     ng g c login<br>
@@ -24,6 +25,7 @@ const Home = () => {
     `,
     Backend: `
 <h2>Backend JSON</h2><br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel JsonUpdate</pre>
@@ -132,6 +134,7 @@ class DatabaseSeeder extends Seeder
 <pre>php artisan db:seed</pre>
 
 <h2>Backend jegyzet 2</h2><br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1rtchoZVqW3OEIk3-yEYtGI_yJRaeKXhv/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel Vizsgagyak02</pre>
@@ -265,6 +268,7 @@ class Car extends Model
 21. Teszteld az API-t Insomniában!
 <p>
 <h2>Backend Offices 1</h2><br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1FvQUzPoQS4_veDf_XPwH9X7xunBsEZaV/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel Office</pre>
@@ -347,6 +351,7 @@ public function authorize()<br>
 <p>Ez a lépés nagyon fontos, mert különben hibát kapsz.</p>
 
 <h2>Backend Offices 2</h2><br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1Adc22sCquLqn70lnaJ0ctzTE385iqN8p/view?usp=sharing<br>
 Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 
@@ -463,6 +468,7 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 <p>
 <h2>Saját</h2>
 <h2>JSON</h2><br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1JmnsgVKVMAngOKN7Tp7821v-GV5YD4K-/view?usp=sharing<br>
 SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
 1. CMD-BEN Projekt generálás C:\Users\Diak\Desktop\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
@@ -586,6 +592,7 @@ class DatabaseSeeder extends Seeder<br>
   `,
 
     Console: `<h2>Console 1</h2><br>
+    Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
     Link:https://drive.google.com/file/d/1A1WB98vKResLPJBvf2idbTwRFgwVNqXv/view?usp=sharing<br>
     1. Console App (nem .NET Framework-ös)<br>
     Be kell pipálni, hogy sima projekt legyen. Don't use Top level Statements<br>
@@ -681,6 +688,7 @@ class DatabaseSeeder extends Seeder<br>
     Console.WriteLine($"Átlagos bérlési időtartam: {avgRentals:F2} nap");<br>
     <p>
     <h2>Console 2</h2><br>
+    Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
     Link:https://drive.google.com/file/d/1dF-yYiCEBgSHLGeU3oEx-fMCnjc42aRx/view?usp=sharing<br>
         1. Console App (nem .NET Framework-ös)<br>
     Be kell pipálni, hogy sima projekt legyen. Don't use Top level Statements<br>
@@ -807,6 +815,7 @@ class DatabaseSeeder extends Seeder<br>
     `,
     Desktop: `
     <h2>Asztalis alkalmazás</h2><br>
+    Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
     Link:https://drive.google.com/file/d/1Imqp3dX2njWmYsBbnYegldfhjfRpKnlZ/view?usp=sharing<br>
     1. Windows Forms App (.Net Framework nélkül)<br>
     <p>
@@ -918,7 +927,8 @@ class DatabaseSeeder extends Seeder<br>
 </code></pre><br>
 <h2>Weboldal 2</h2>
 Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
-Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0
+Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
+Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
 `
   };
 
