@@ -930,6 +930,588 @@ class DatabaseSeeder extends Seeder<br>
 Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
 Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
 Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
+`,
+ $4J4T$: `
+    <h2>Az egész egyben</h2><br>
+Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
+Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
+Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
+
+    <h2>Weboldal</h2><br>
+
+Az officerental alapján készült<br>
+
+1. Létre kell hozni egy új mappát aminek lehet bármi a neve <br>
+
+2. Itt írni kell egy cmd-t és nyitni kell egy visual studio code-t<br>
+
+3. A projektben egy img mappa létrehozása kell hogy bele tudjuk tenni a képeket <br>
+
+4. Létrehozunk egy index.html-t ami így néz ki <br>
+
+&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="hu"&gt;<br>
+&lt;head&gt;<br>
+  &lt;meta charset="UTF-8"&gt;<br>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;<br>
+  &lt;title&gt;Iroda Bérlés&lt;/title&gt;<br>
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;<br>
+  &lt;link rel="stylesheet" href="style.css"&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+<br>
+&lt;!-- NAVBAR --&gt;<br>
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-2"&gt;<br>
+  &lt;a class="navbar-brand text-success fw-bold" href="#"&gt;Office Sphere&lt;/a&gt;<br>
+  &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;<br>
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;<br>
+  &lt;/button&gt;<br>
+  &lt;div class="collapse navbar-collapse justify-content-between" id="navbarNav"&gt;<br>
+    &lt;ul class="navbar-nav"&gt;<br>
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link text-white" href="#"&gt;Rent Office&lt;/a&gt;&lt;/li&gt;<br>
+    &lt;/ul&gt;<br>
+    &lt;form class="d-flex mt-3 mt-lg-0" role="search"&gt;<br>
+      &lt;input class="form-control me-2" type="search" placeholder="Search"&gt;<br>
+      &lt;button class="btn btn-outline-success" type="submit"&gt;Search&lt;/button&gt;<br>
+    &lt;/form&gt;<br>
+  &lt;/div&gt;<br>
+&lt;/nav&gt;<br>
+<br>
+&lt;!-- HEADER --&gt;<br>
+&lt;header class="container mt-5"&gt;<br>
+  &lt;div class="row align-items-center"&gt;<br>
+    &lt;div class="col-lg-6"&gt;<br>
+      &lt;h1 class="display-5 fw-light"&gt;The Best &lt;br&gt;<br>
+        &lt;span class="fw-bold"&gt;Private Office Experience, Luxury in the City.&lt;/span&gt;&lt;br&gt;<br>
+        &lt;span class="text-success fw-bold"&gt;GlobalSpaces&lt;/span&gt;<br>
+      &lt;/h1&gt;<br>
+      &lt;p class="mt-3"&gt;GlobalSpaces brings you the magic of premium private office experiences! We all know the chaos that comes with crowded co-working spaces and the hassle of finding suitable meeting rooms – endless hours spent on bookings, logistics, and compromises. Why not choose complete freedom and comfort instead? Enjoy your own private office space with your team, clients, or partners – the true meaning of professional productivity and peace of mind.&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;div class="col-lg-6"&gt;<br>
+      &lt;img src="img/office1.jpg" class="img-fluid  shadow" alt="Office"&gt;<br>
+    &lt;/div&gt;<br>
+  &lt;/div&gt;<br>
+&lt;/header&gt;<br>
+<br>
+&lt;!-- SECTION 1 --&gt;<br>
+&lt;section class="container mt-5"&gt;<br>
+  &lt;div class="row align-items-center flex-column flex-md-row mb-5"&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+      &lt;img src="img/office2.jpg" class="img-fluid shadow" alt="Office 2"&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;div class="col-md-6 mt-4 mt-md-0 ps-md-5"&gt;<br>
+      &lt;h2&gt;&lt;span class="text-success display-6 fw-bold"&gt;A&lt;/span&gt;bout Us&lt;/h2&gt;<br>
+      &lt;p&gt;GlobalSpaces embodies modern luxury and flexibility in workspace solutions. Our network features meticulously selected, world-class office spaces, offering the perfect environment for daily work, corporate events, client meetings, or project collaborations. Whether you're looking for a short-term spot or a long-term base, you'll find the ideal office with us – complete with personalized services, premium facilities, and professional support. Experience unlimited productivity and maximum comfort with GlobalSpaces.&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+  &lt;/div&gt;<br>
+<br>
+  &lt;!-- SECTION 2 --&gt;<br>
+  &lt;div class="row align-items-center flex-column-reverse flex-md-row"&gt;<br>
+    &lt;div class="col-md-6 mt-4 mt-md-0 pe-md-5"&gt;<br>
+      &lt;h2&gt;&lt;span class="text-success display-6 fw-bold"&gt;O&lt;/span&gt;ffices&lt;/h2&gt;<br>
+      &lt;p&gt;The World's Finest Offices for Your Perfect Workdays<br>
+Our collection of office spaces perfectly blends modern design and professional elegance. Whether you seek sleek private offices, dynamic co-working areas, or prestigious corporate suites – we offer a wide selection to meet every business need. Our offices feature the latest technology, spacious workstations, meeting rooms, relaxation zones, and premium amenities. Let our expert team help you find the perfect office space to make every workday truly exceptional!&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+      &lt;img src="img/office3.png" class="img-fluid  shadow" alt="Office 3"&gt;<br>
+    &lt;/div&gt;<br>
+  &lt;/div&gt;<br>
+&lt;/section&gt;<br>
+<br>
+&lt;!-- FOOTER --&gt;<br>
+&lt;footer class="bg-dark text-white text-center py-3 mt-5"&gt;<br>
+  &amp;copy; 2025 Office Sphere – All rights reserved.<br>
+&lt;/footer&gt;<br>
+<br>
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+<br>
+<p>
+5. És létrehozunk egy styles.css-t ami így néz ki <br>
+<p>
+&lt;!-- Egyéni stílusok --&gt;<br>
+&lt;style&gt;<br>
+.bg-green {<br>
+  background-color: rgb(114, 221, 120) !important;<br>
+}<br>
+.navbar-brand {<br>
+  font-weight: bold;<br>
+}<br>
+h1, h2 {<br>
+  color: rgb(40, 40, 40);<br>
+}<br>
+.text-success {<br>
+  color: rgb(114, 221, 120) !important;<br>
+}<br>
+&lt;/style&gt;<br>
+
+<h2>DESKTOP<h2>
+Az office rentals alapján készült<br>
+<br>
+1. A létrehozáshoz két verzió lehetséges. Amikor a console alkalmazást használva tovább fejlesztjük és lesz egy desktopos alkalmazás is pluszba VAGY <br>
+ha teljesen egy új projektet generálunk.<br>
+<br>
+2. Ha újjat generálunk akkor egy visual studio nyitása és create new project <br>
+<br>
+3. A Windows Forms App kiválasztása és utánna egy névadás után create és fontos hogy csak .net 8.0-as verzió legyen<br>
+<br>
+4. Mikor megtörténik a kreálás egy teljesen üres oldal jelenik meg amin van egy bezár, nagyobb képernyő és kisebb képernyő gomb<br>
+<br>
+5. Jobb egérrel ha rákattintasz megjelenik egy view code gomb vagy ha az f7 billentyű leütésére is megjelnik az oldal<br>
+<br>
+6. Ez a form1.cs ahova lehet beleírni a kódokat hogy nézzen ki maga az ablak amibe ezt kell írni <br>
+<br>
+-----------------------------------------------------<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.IO;<br>
+using System.Linq;<br>
+using System.Windows.Forms;<br>
+<br>
+namespace OfficesDesktop<br>
+{<br>
+    public partial class Form1 : Form<br>
+    {<br>
+        private DataGridView dgv;<br>
+        private TextBox txtOfficeName;<br>
+        private DateTimePicker dtpDate;<br>
+        private ComboBox cmbCategory;<br>
+        private NumericUpDown nudAmount;<br>
+        private TextBox txtNote;<br>
+        private Button btnAdd;<br>
+<br>
+        private List<OfficeCost> officeCosts = new List<OfficeCost>();<br>
+        private string filePath = "office_costs_2024.csv";<br>
+<br>
+        public Form1()<br>
+        {<br>
+            InitializeComponent();<br>
+            InitializeFormElements();<br>
+            LoadCsv();<br>
+            RefreshGrid();<br>
+        }<br>
+<br>
+        private void InitializeFormElements()<br>
+        {<br>
+            this.Text = "Office Cost Manager";<br>
+            this.Width = 900;<br>
+            this.Height = 600;<br>
+<br>
+            dgv = new DataGridView<br>
+            {<br>
+                Location = new System.Drawing.Point(10, 10),<br>
+                Width = 860,<br>
+                Height = 300,<br>
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill<br>
+            };<br>
+            this.Controls.Add(dgv);<br>
+<br>
+            Label lblOffice = new Label { Text = "Office Name:", Location = new System.Drawing.Point(10, 320) };<br>
+            txtOfficeName = new TextBox { Location = new System.Drawing.Point(120, 320), Width = 200 };<br>
+<br>
+            Label lblDate = new Label { Text = "Date:", Location = new System.Drawing.Point(10, 360) };<br>
+            dtpDate = new DateTimePicker { Location = new System.Drawing.Point(120, 360), Width = 200 };<br>
+<br>
+            Label lblCategory = new Label { Text = "Category:", Location = new System.Drawing.Point(10, 400) };<br>
+            cmbCategory = new ComboBox { Location = new System.Drawing.Point(120, 400), Width = 200 };<br>
+            cmbCategory.Items.AddRange(new string[] { "Maintenance", "Repairs", "Insurance", "Cleaning", "Utilities", "Other" });<br>
+            cmbCategory.SelectedIndex = 0;<br>
+<br>
+            Label lblAmount = new Label { Text = "Amount (EUR):", Location = new System.Drawing.Point(10, 440) };<br>
+            nudAmount = new NumericUpDown { Location = new System.Drawing.Point(120, 440), Width = 200, Maximum = 1000000, DecimalPlaces = 2 };<br>
+<br>
+            Label lblNote = new Label { Text = "Note:", Location = new System.Drawing.Point(10, 480) };<br>
+            txtNote = new TextBox { Location = new System.Drawing.Point(120, 480), Width = 200 };<br>
+<br>
+            btnAdd = new Button { Text = "Add", Location = new System.Drawing.Point(350, 440), Width = 100 };<br>
+            btnAdd.Click += BtnAdd_Click;<br>
+<br>
+            this.Controls.Add(lblOffice);<br>
+            this.Controls.Add(txtOfficeName);<br>
+            this.Controls.Add(lblDate);<br>
+            this.Controls.Add(dtpDate);<br>
+            this.Controls.Add(lblCategory);<br>
+            this.Controls.Add(cmbCategory);<br>
+            this.Controls.Add(lblAmount);<br>
+            this.Controls.Add(nudAmount);<br>
+            this.Controls.Add(lblNote);<br>
+            this.Controls.Add(txtNote);<br>
+            this.Controls.Add(btnAdd);<br>
+        }<br>
+<br>
+        private void LoadCsv()<br>
+        {<br>
+            if (!File.Exists(filePath))<br>
+                return;<br>
+<br>
+            var lines = File.ReadAllLines(filePath);<br>
+            foreach (var line in lines.Skip(1))<br>
+            {<br>
+                var parts = line.Split(';');<br>
+                officeCosts.Add(new OfficeCost<br>
+                {<br>
+                    Id = int.Parse(parts[0]),<br>
+                    OfficeName = parts[1],<br>
+                    Date = DateTime.Parse(parts[2]),<br>
+                    Category = parts[3],<br>
+                    Amount = decimal.Parse(parts[4]),<br>
+                    Note = parts[5]<br>
+                });<br>
+            }<br>
+        }<br>
+<br>
+        private void SaveCsv()<br>
+        {<br>
+            var lines = new List<string> { "id;officename;datum;kategoria;osszeg;megjegyzes" };<br>
+            lines.AddRange(officeCosts.Select(x => $"{x.Id};{x.OfficeName};{x.Date:yyyy-MM-dd};{x.Category};{x.Amount};{x.Note}"));<br>
+            File.WriteAllLines(filePath, lines);<br>
+        }<br>
+<br>
+        private void RefreshGrid()<br>
+        {<br>
+            dgv.DataSource = null;<br>
+            dgv.DataSource = officeCosts;<br>
+        }<br>
+<br>
+        private void BtnAdd_Click(object sender, EventArgs e)<br>
+        {<br>
+            int nextId = officeCosts.Any() ? officeCosts.Max(x => x.Id) + 1 : 1;<br>
+            var newCost = new OfficeCost<br>
+            {<br>
+                Id = nextId,<br>
+                OfficeName = txtOfficeName.Text,<br>
+                Date = dtpDate.Value,<br>
+                Category = cmbCategory.SelectedItem.ToString(),<br>
+                Amount = nudAmount.Value,<br>
+                Note = txtNote.Text<br>
+            };<br>
+<br>
+            officeCosts.Add(newCost);<br>
+            SaveCsv();<br>
+            RefreshGrid();<br>
+<br>
+            txtOfficeName.Clear();<br>
+            nudAmount.Value = 0;<br>
+            txtNote.Clear();<br>
+            cmbCategory.SelectedIndex = 0;<br>
+            dtpDate.Value = DateTime.Now;<br>
+        }<br>
+    }<br>
+<br>
+    public class OfficeCost<br>
+    {<br>
+        public int Id { get; set; }<br>
+        public string OfficeName { get; set; }<br>
+        public DateTime Date { get; set; }<br>
+        public string Category { get; set; }<br>
+        public decimal Amount { get; set; }<br>
+        public string Note { get; set; }<br>
+    }<br>
+}<br>
+<br>
+
+------------------------------------------------------<br>
+<br>
+7. Az office_costs_2024 filet be kell ilelszteni a projektbe a többi file mellé a program.cs fölé vagy végülis mind1 csak a többi mellé<br>
+<br>
+7/1. Amikor megtörtént a beillesztés akkor a .csv properitest meg kell nyitni amit vagy a Soulution Exploirer alatt lévő kulcsra kattintva ellehet érni vagy jobb egér gomb a <br>
+.csv-re és akkor legalul rálehet menni a properites-re<br>
+<br>
+7/2. A properites megjelenik és a Build Action-t Contentre kell állítani és a Copy to Output Drictory-t meg Copy if newer-re<br>
+<br>
+8. Ha lefut akkor minden ok <br>
+
+!!!!!!!!!!!!!!!!!!!!!!!<br>
+
+Ha hozzákreáljuk a meglévő consoloe alkalmazáshoz akkor <br>
+<br>
+!!!!!!!!!!!!!!!!!!!!!!!<br>
+<br>
+1. A Solution "OfficesConsole" (1 of 1) project-re kattintva jobb egér gombbal az add - new project megnyomásával kreálunk egy új projektet és az előző lehetőségben <br>
+megmutattott módon kreálunk egy projektet<br>
+<br>
+2. Itt csak az a fontos hogy mindent az adott projekt fejlesztéséhez szánt terültre illeszünk <br>
+<br>
+3. Ennyi<br>
+
+<h2>Api</h2>
+Az office rentals szerint <br>
+<br>
+1. A visual studio megnyitása után egy új projekt generálása<br>
+<br>
+2. Itt egy ASP.NET Core Web Api kiválasztása <br>
+<br>
+3. A projekt neve ebben az estben OfficesAPI és amikor tovább lépsz egy .NET 8.0 verzió választása <br>
+<br>
+4. Itt a https kiválasztása és a openapi support és do not use top level mellett a use controllers kiválasztása és kreálás<br>
+<br>
+5. Amikor megjelenik a projekt akkor a weatherforecast.cs törlése <br>
+<br>
+6. A controllers mappén belül is a weatherforecast.controller.cs törlése<br>
+<br>
+7. Az OfficesAPI-ra kattintás és aztán egy új Models mappa hozzáadása <br>
+<br>
+7/1. A models mappán belül egy Berles osztály létrehozása hogy jobb egérgombal a Models-re kattintasz és add és class-ra kattintva <br>
+<br>
+7/2. A Berles.cs-be ezt kell írni<br>
+<br>
+---------------------------------------------------<br>
+<br>
+﻿using System.ComponentModel.DataAnnotations.Schema;<br>
+<br>
+namespace OfficesAPI.Models<br>
+{<br>
+    public class Berles<br>
+    {<br>
+        public int Id { get; set; }<br>
+<br>
+        public int Uid { get; set; }<br>
+<br>
+        public int OfficeId { get; set; }<br>
+<br>
+        public DateTime StartDate { get; set; }<br>
+<br>
+        public DateTime EndDate { get; set; }<br>
+<br>
+        public int DailyRate { get; set; }<br>
+<br>
+<br>
+        public int BaseFee { get; set; }<br>
+<br>
+        [NotMapped]<br>
+        public int TotalPrice<br>
+        {<br>
+            get<br>
+            {<br>
+                int napok = (EndDate - StartDate).Days + 1;<br>
+                return BaseFee + (napok * DailyRate);<br>
+            }<br>
+        }<br>
+<br>
+    }<br>
+}<br>
+
+
+-----------------------------------------------------<br>
+<br>
+8. A controllers mappára kattintva egy add és azon belül newscaffoldeditem-re kattintva egy API Controller with actions, using Entity Framework-re kattintva <br>
+<br>
+8/1. Megjelenik egy fül amiben a Model classon belül a Berles-t kell választani<br>
+<br>
+8/2. A dbcontext class-nál egy + jelre kattintva megjelnik egy ablak ott az add-ot kell megnyomni <br>
+<br>
+8/3. A controllerName itt a BerlesController HELYETT BerlesekController kell legyen és ez után egy Add gomb megnyomása<br>
+<br>
+9. Miután megtörtént a Scaffolded itemezés a generált BerlesekController.cs-en belül így kell hogy kinézzen<br>
+------------------------------------<br>
+﻿using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Threading.Tasks;<br>
+using Microsoft.AspNetCore.Http;<br>
+using Microsoft.AspNetCore.Mvc;<br>
+using Microsoft.EntityFrameworkCore;<br>
+using OfficesAPI.Data;<br>
+using OfficesAPI.Models;<br>
+<br>
+namespace OfficesAPI.Controllers<br>
+{<br>
+    [Route("api/[controller]")]<br>
+    [ApiController]<br>
+    public class BerlesekController : ControllerBase<br>
+    {<br>
+        private readonly OfficesAPIContext _context;<br>
+<br>
+        public BerlesekController(OfficesAPIContext context)<br>
+        {<br>
+            _context = context;<br>
+        }<br>
+<br>
+        // GET: api/Berlesek<br>
+        [HttpGet]<br>
+        public async Task<ActionResult<IEnumerable<Berles>>> GetBerles()<br>
+        {<br>
+            return await _context.Berles.ToListAsync();<br>
+        }<br>
+<br>
+        // GET: api/Berlesek/5<br>
+        [HttpGet("{id}")]<br>
+        public async Task<ActionResult<Berles>> GetBerles(int id)<br>
+        {<br>
+            var berles = await _context.Berles.FindAsync(id);<br>
+<br>
+            if (berles == null)<br>
+            {<br>
+                return NotFound();<br>
+            }<br>
+<br>
+            return berles;<br>
+        }<br>
+
+        //// PUT: api/Berlesek/5<br>
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754<br>
+        //[HttpPut("{id}")]<br>
+        //public async Task<IActionResult> PutBerles(int id, Berles berles)<br>
+        //{<br>
+        //    if (id != berles.Id)<br>
+        //    {<br>
+        //        return BadRequest();<br>
+        //    }<br>
+<br>
+        //    _context.Entry(berles).State = EntityState.Modified;<br>
+<br>
+        //    try<br>
+        //    {<br>
+        //        await _context.SaveChangesAsync();<br>
+        //    }<br>
+        //    catch (DbUpdateConcurrencyException)<br>
+        //    {<br>
+        //        if (!BerlesExists(id))<br>
+        //        {<br>
+        //            return NotFound();<br>
+        //        }<br>
+        //        else<br>
+        //        {<br>
+        //            throw;<br>
+        //        }<br>
+        //    }<br>
+<br>
+        //    return NoContent();<br>
+        //}<br>
+<br>
+        // POST: api/Berlesek<br>
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754<br>
+        [HttpPost]<br>
+        public async Task<ActionResult<Berles>> PostBerles(Berles berles)<br>
+        {<br>
+            // A bérlés kezdete nem lehet korábbi, mint holnap<br>
+            if (berles.StartDate.Date < DateTime.Today.AddDays(1))<br>
+            {<br>
+                return BadRequest("The office rental can start no earlier than tomorrow.");<br>
+            }<br>
+<br>
+            // Legalább 5 napos bérlés<br>
+            var napok = (berles.EndDate - berles.StartDate).TotalDays + 1;<br>
+            if (napok < 5)<br>
+            {<br>
+                return BadRequest("The minimum office rental period is 5 days.");<br>
+            }<br>
+<br>
+            // Legfeljebb 90 napos bérlés<br>
+            if (napok > 90)<br>
+            {<br>
+                return BadRequest("The maximum office rental period is 90 days.");<br>
+            }<br>
+<br>
+            // Átfedés ellenőrzése ugyanarra az irodára<br>
+            bool overlapExists = await _context.Berles.AnyAsync(b =><br>
+                b.OfficeId == berles.OfficeId &&<br>
+                !(berles.EndDate <= b.StartDate || berles.StartDate >= b.EndDate)<br>
+            );<br>
+<br>
+            if (overlapExists)<br>
+            {<br>
+                return BadRequest("The selected office is already booked during the specified period.");<br>
+            }<br>
+<br>
+            _context.Berles.Add(berles);<br>
+            await _context.SaveChangesAsync();<br>
+<br>
+            return CreatedAtAction("GetBerles", new { id = berles.Id }, berles);<br>
+        }<br>
+<br>
+        // DELETE: api/Berlesek/5<br>
+        [HttpDelete("{id}")]<br>
+        public async Task<IActionResult> DeleteBerles(int id)<br>
+        {<br>
+            var berles = await _context.Berles.FindAsync(id);<br>
+            if (berles == null)<br>
+            {<br>
+                return NotFound();<br>
+            }<br>
+<br>
+            _context.Berles.Remove(berles);<br>
+            await _context.SaveChangesAsync();<br>
+<br>
+            return NoContent();<br>
+        }<br>
+<br>
+        private bool BerlesExists(int id)<br>
+        {<br>
+            return _context.Berles.Any(e => e.Id == id);<br>
+        }<br>
+    }<br>
+}<br>
+---------------------------------------------<br>
+<br>
+10. Miután megtörtént a bemásolás kell egy build és aztán egy NugetPackageManager console-t kell nyitni amit a tools menüben a NugetPackageManager menüben lehet elérni<br>
+<br>
+11. FONTOS Hogy fent a projekt futtatása az aktulis projektre legyen állíva ez esetben az OfficesAPI-ra és lent is PackageManager Debug Consolján a Default Project <br>
+legyen az aktuális projektre állítva<br>
+<br>
+12. A NugetPackageManager Console-ba ezt kell beírni Add-Migration Initial<br>
+<br>
+13. Miután lefutott ugyanoda egy Update-Database parancsot kell kiadni <br>
+<br>
+14. Miután az is lefutott a Program.cs-be be kell írni pár sort de így kell hogy véglegesen kinézzen <br>
+<br>
+------------------------------------------<br>
+<br>
+using Microsoft.EntityFrameworkCore;<br>
+using Microsoft.Extensions.DependencyInjection;<br>
+using OfficesAPI.Data;<br>
+<br>
+namespace OfficesAPI<br>
+{<br>
+    public class Program<br>
+    {<br>
+        public static void Main(string[] args)<br>
+        {<br>
+            var builder = WebApplication.CreateBuilder(args);<br>
+            builder.Services.AddDbContext<OfficesAPIContext>(options =><br>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("OfficesAPIContext") ?? throw new InvalidOperationException("Connection string 'OfficesAPIContext' not found.")));<br>
+<br>
+            // Add services to the container.<br>
+<br>
+            builder.Services.AddControllers();<br>
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle<br>
+            builder.Services.AddEndpointsApiExplorer();<br>
+            builder.Services.AddSwaggerGen();<br>
+<br>
+            var app = builder.Build();<br>
+<br>
+            // Configure the HTTP request pipeline.<br>
+            if (app.Environment.IsDevelopment())<br>
+            {<br>
+                app.UseSwagger();<br>
+                app.UseSwaggerUI();<br>
+            }<br>
+<br>
+            app.UseCors(builder => builder<br>
+                    .AllowAnyHeader()<br>
+                    .AllowAnyMethod()<br>
+                    .AllowAnyOrigin()<br>
+                    );<br>
+<br>
+            app.UseHttpsRedirection();<br>
+<br>
+            app.UseAuthorization();<br>
+<br>
+<br>
+            app.MapControllers();<br>
+<br>
+            app.Run();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+----------------------------------------------<br>
+<br>
+15. Mikor megtörtént az átírás akkor már lehet is tesztelni hogy működik <br>
+<br>
 `
   };
 
@@ -967,6 +1549,10 @@ Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWE
       {/* Ötödik szekció */}
       <section onClick={() => handleClick("Weboldal")}>
         <h1>Weboldal</h1>
+      </section>
+
+        <section onClick={() => handleClick("$4J4T$")}>
+        <h1>$4J4T$</h1>
       </section>
 
       {/* Pop-up ablak */}
