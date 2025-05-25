@@ -931,7 +931,7 @@ Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=
 Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
 Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
 `,
- $4J4T$: `
+ Minden: `
     <h2>Az egész egyben</h2><br>
 Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
 Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
@@ -2514,116 +2514,114 @@ export class BaseService {<br>
 <br>
 20. Utánna meg az offices-lists.component.ts-be kell ezeket beleírni<br>
 ..................................................<br>
-import { HttpErrorResponse } from '@angular/common/http';<br>
-import { Component, inject } from '@angular/core';<br>
-import { NgbCalendar, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';<br>
-import { BaseService } from '../base.service';<br>
+&lt;import { HttpErrorResponse } from '@angular/common/http';&gt;<br>
+&lt;import { Component, inject } from '@angular/core';&gt;<br>
+&lt;import { NgbCalendar, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';&gt;<br>
+&lt;import { BaseService } from '../base.service';&gt;<br>
+&lt;&gt;<br>
+&lt;@Component({&gt;<br>
+&lt;  selector: 'app-offices-lists',&gt;<br>
+&lt;  templateUrl: './offices-lists.component.html',&gt;<br>
+&lt;  styleUrl: './offices-lists.component.css'&gt;<br>
+&lt;})&gt;<br>
+&lt;export class OfficesListsComponent {&gt;<br>
+&lt;  calendar = inject(NgbCalendar);&gt;<br>
+&lt;  date: NgbDate | null = null;&gt;<br>
+&lt;  hoveredDate: NgbDate | null = null;&gt;<br>
+&lt;  fromDate: NgbDate = this.calendar.getNext(this.calendar.getToday(),'d',1);&gt;<br>
+&lt;  toDate: NgbDate |null = this.calendar.getNext(this.fromDate, 'd', 2);&gt;<br>
+&lt;&gt;<br>
+&lt;  offices:any&gt;<br>
+&lt;  newRental:any={}&gt;<br>
+&lt;  // rentals:any&gt;<br>
+&lt;  error=false&gt;<br>
+&lt;  success=false&gt;<br>
+&lt;  errorMessage:any&gt;<br>
+&lt;  cart:any=null&gt;<br>
+&lt;&gt;<br>
+&lt;  constructor(private base:BaseService){&gt;<br>
+&lt;    this.base.getOffices().subscribe(&gt;<br>
+&lt;      (j)=&gt;this.offices=j&gt;<br>
+&lt;    )&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  addCart(office:any){&gt;<br>
+&lt;    this.cart=office;&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  deleteItem(){&gt;<br>
+&lt;    this.cart=null&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  postRental(){&gt;<br>
+&lt;    const body={&gt;<br>
+&lt;      uid:"101",&gt;<br>
+&lt;      startDate: this.ngbDateToDateString(this.fromDate),&gt;<br>
+&lt;      endDate: this.toDate?this.ngbDateToDateString(this.toDate):0,&gt;<br>
+&lt;      officeId:this.cart.id,&gt;<br>
+&lt;      dailyRate:this.cart.daily_price,&gt;<br>
+&lt;      baseFee:this.cart.base_fee&gt;<br>
+&lt;    }&gt;<br>
+&lt;&gt;<br>
+&lt;    console.log(body)&gt;<br>
+&lt;    this.base.postOfficeRental(body).subscribe(&gt;<br>
+&lt;      {&gt;<br>
+&lt;        next:(a)=&gt;{&gt;<br>
+&lt;          this.error=false&gt;<br>
+&lt;          this.success=true;&gt;<br>
+&lt;        },&gt;<br>
+&lt;        error: (e: HttpErrorResponse) =&gt; {&gt;<br>
+&lt;          console.log("hiba", e)&gt;<br>
+&lt;          this.success = false;&gt;<br>
+&lt;          this.error = true;&gt;<br>
+&lt;          const statusCode = e.status;&gt;<br>
+&lt;          const serverMessage = typeof e.error === 'string'&gt;<br>
+&lt;            ? e.error&gt;<br>
+&lt;            : e.error?.message || 'An unknown error occurred.' &gt;<br>
+&lt;          this.errorMessage=serverMessage&gt;<br>
+&lt;        }&gt;<br>
+&lt;    })&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  onDateSelection(date: NgbDate) {&gt;<br>
+&lt;    if (!this.fromDate && !this.toDate) {&gt;<br>
+&lt;      this.fromDate = date;&gt;<br>
+&lt;    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {&gt;<br>
+&lt;      this.toDate = date;&gt;<br>
+&lt;    } else {&gt;<br>
+&lt;      this.toDate = null;&gt;<br>
+&lt;      this.fromDate = date;&gt;<br>
+&lt;    }&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  isHovered(date: NgbDate) {&gt;<br>
+&lt;    return (&gt;<br>
+&lt;      this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)&gt;<br>
+&lt;    );&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  isInside(date: NgbDate) {&gt;<br>
+&lt;    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  isRange(date: NgbDate) {&gt;<br>
+&lt;    return (&gt;<br>
+&lt;      date.equals(this.fromDate) ||&gt;<br>
+&lt;      (this.toDate && date.equals(this.toDate)) ||&gt;<br>
+&lt;      this.isInside(date) ||&gt;<br>
+&lt;      this.isHovered(date)&gt;<br>
+&lt;    );&gt;<br>
+&lt;  }&gt;<br>
+&lt;&gt;<br>
+&lt;  ngbDateToDateString(ngbDate: NgbDateStruct): string {&gt;<br>
+&lt;    const year = ngbDate.year;&gt;<br>
+&lt;    const month = String(ngbDate.month).padStart(2, '0');&gt;<br>
+&lt;    const day = String(ngbDate.day).padStart(2, '0');&gt;<br>
+&lt;    const s = dollarjel{year}-dollarjel{month}-dollarjel{day} anniyi hogy a dollarjeles részt két alt+7 közé kell tenni;&gt;<br>
+&lt;    return s;&gt;<br>
+&lt;  }&gt;<br>
+&lt;}&gt;<br>
 <br>
-@Component({<br>
-  selector: 'app-offices-lists',<br>
-  templateUrl: './offices-lists.component.html',<br>
-  styleUrl: './offices-lists.component.css'<br>
-})<br>
-export class OfficesListsComponent {<br>
- calendar = inject(NgbCalendar);<br>
-  date: NgbDate | null = null;<br>
-  hoveredDate: NgbDate | null = null;<br>
-  fromDate: NgbDate = this.calendar.getNext(this.calendar.getToday(),'d',1);<br>
-  toDate: NgbDate |null = this.calendar.getNext(this.fromDate, 'd', 2);<br>
-  <br>
-  offices:any<br>
-  newRental:any={}<br>
-  // rentals:any<br>
-  error=false<br>
-  success=false<br>
-  errorMessage:any<br>
-  cart:any=null<br>
-  <br>
-  <br>
-  constructor(private base:BaseService){<br>
-    this.base.getOffices().subscribe(<br>
-      (j)=>this.offices=j<br>
-    )<br>
-  }<br>
-  <br>
-  addCart(office:any){<br>
-    this.cart=office;  <br>
-  }<br>
-  <br>
-  deleteItem(){<br>
-    this.cart=null<br>
-  }<br>
-  <br>
-  <br>
-  <br>
-  postRental(){<br>
-   const body={<br>
-      uid:"101",<br>
-      startDate: this.ngbDateToDateString(this.fromDate),<br>
-      endDate: this.toDate?this.ngbDateToDateString(this.toDate):0,<br>
-      officeId:this.cart.id,<br>
-      dailyRate:this.cart.daily_price,<br>
-      baseFee:this.cart.base_fee<br>
-      }<br>
-   <br>
-    console.log(body)<br>
-    this.base.postOfficeRental(body).subscribe(<br>
-      {<br>
-        next:(a)=>{<br>
-          this.error=false<br>
-          this.success=true;<br>
-      },<br>
-      error: (e: HttpErrorResponse) => {<br>
-            console.log("hiba", e)<br>
-            this.success = false;<br>
-            this.error = true;       <br>       
-            const statusCode = e.status; <br>     
-           <br>
-            const serverMessage = typeof e.error === 'string'<br>
-              ? e.error<br>
-              : e.error?.message || 'An unknown error occurred.' <br>
-            this.errorMessage=serverMessage             <br>
-      }})  <br>
-  }<br>
-  <br>
-  onDateSelection(date: NgbDate) {<br>
-    if (!this.fromDate && !this.toDate) {<br>
-      this.fromDate = date;<br>
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {<br>
-      this.toDate = date;<br>
-    } else {<br>
-      this.toDate = null;<br>
-      this.fromDate = date;<br>
-    }<br>
-  }<br>
-  <br>
-  isHovered(date: NgbDate) {<br>
-    return (<br>
-      this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)<br>
-    );<br>
-  }<br>
-  <br>
-  isInside(date: NgbDate) {<br>
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);<br>
-  }<br>
-  <br>
-  isRange(date: NgbDate) {<br>
-    return (<br>
-      date.equals(this.fromDate) ||<br>
-      (this.toDate && date.equals(this.toDate)) ||<br>
-      this.isInside(date) ||<br>
-      this.isHovered(date)<br>
-    );<br>
-  }<br>
-  <br>
-  ngbDateToDateString(ngbDate: NgbDateStruct): string {<br>
-    const year = ngbDate.year;<br>
-    const month = String(ngbDate.month).padStart(2, '0');<br>
-    const day = String(ngbDate.day).padStart(2, '0');<br>
-    const s= ${year}-${month}-${day} ide kell egy `` a year elé és a day után <br>
-    return s; <br>
-  }<br>
-}<br>
 .......................................................<br>
 <br>
 21. Aztán az offices-list.component.html-be kell beleírni ezt<br>
@@ -2751,8 +2749,8 @@ export class OfficesListsComponent {<br>
         <h1>Weboldal</h1>
       </section>
 
-        <section onClick={() => handleClick("$4J4T$")}>
-        <h1>$$$$$</h1>
+        <section onClick={() => handleClick("Minden")}>
+        <h1>Minden</h1>
       </section>
 
       {/* Pop-up ablak */}
