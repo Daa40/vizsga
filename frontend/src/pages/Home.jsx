@@ -1046,7 +1046,7 @@ h1, h2 {<br>
 }<br>
 &lt;/style&gt;<br>
 
-<h2>DESKTOP<h2>
+<h2>DESKTOP</h2>
 Az office rentals alapján készült<br>
 <br>
 1. A létrehozáshoz két verzió lehetséges. Amikor a console alkalmazást használva tovább fejlesztjük és lesz egy desktopos alkalmazás is pluszba VAGY <br>
@@ -1512,6 +1512,625 @@ namespace OfficesAPI<br>
 <br>
 15. Mikor megtörtént az átírás akkor már lehet is tesztelni hogy működik <br>
 <br>
+<p>
+<h2>Console 1 csv</h2>
+A teszt az officerental szerint működik<br>
+<br>
+1. Microsoft Visual Studio nyitása<br>
+<br>
+2. Create New Project gombra kattintva átirányít hogy kiválaszd a projektet<br>
+<br>
+3. A sima console app választása NEM A .NET-ES VERZIÓ<br>
+<br>
+4. ProjectName akármi de ebben az esetben OfficeRentalApp<br>
+<br>
+5. Utánna a next gomb megnyomására megjelenik a Framework ami .8.0 legyen és a Do Not use top-level statements bejelülése (kipipálása)<br>
+<br>
+6. Create<br>
+<br>
+7. Miután kreálódott a projekt egy új osztályt kell létrehozni ami ez esetben a berles<br>
+<br>
+7/1. A program.cs alatti üres rész jobb egérgomb és .add azon belül a .class <br>
+<br>
+7/2. A bérlés classon belül ezt kell írni<br>
+<br>
+--------------------------------------------------------------<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Globalization;<br>
+using System.IO;<br>
+using System.Linq;<br>
+<br>
+public class Berles<br>
+{<br>
+    public int Uid { get; set; }<br>
+    public int OfficeId { get; set; }<br>
+    public DateTime StartDate { get; set; }<br>
+    public DateTime EndDate { get; set; }<br>
+    public int DailyRate { get; set; }<br>
+    public int BaseFee { get; set; }<br>
+    public string Name { get; set; }<br>
+<br>
+    // Konstruktor<br>
+    public Berles(string line)<br>
+    {<br>
+        string[] row = line.Split(",");<br>
+        Uid = int.Parse(row[0]);<br>
+        OfficeId = int.Parse(row[1]);<br>
+        StartDate = DateTime.ParseExact(row[2], "yyyy-MM-dd", CultureInfo.InvariantCulture);<br>
+        EndDate = DateTime.ParseExact(row[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);<br>
+        DailyRate = int.Parse(row[4]);<br>
+        BaseFee = int.Parse(row[5]);<br>
+        Name = row[6];<br>
+    }<br>
+<br>
+    // Számított tulajdonság: TotalPrice<br>
+    public int TotalPrice<br>
+    {<br>
+        get<br>
+        {<br>
+            var days = (int)(EndDate - StartDate).TotalDays;<br>
+            return days * DailyRate;<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+-----------------------------------------------------------------<br>
+<br>
+<br>
+<br>
+8. Utánna a program.cs-be ezt kell írni <br>
+<br>
+----------------------------------------------------------<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.IO;<br>
+using System.Linq;<br>
+<br>
+class Program<br>
+{<br>
+    static void Main(string[] args)<br>
+    {<br>
+        var berlesek = new List<Berles>();<br>
+<br>
+        // Fájl beolvasása<br>
+        foreach (var item in File.ReadAllLines("office_rentals_2024.csv").Skip(1))<br>
+        {<br>
+            berlesek.Add(new Berles(item));<br>
+        }<br>
+<br>
+        // 2. feladat: Havi bevétel kiszámítása<br>
+        Console.Write("Kérem adjon meg egy hónapot (1-12): ");<br>
+        int month = int.Parse(Console.ReadLine());<br>
+        var monthlyRevenue = CalculateMonthlyRevenue(berlesek, month);<br>
+        Console.WriteLine($"A havi bevétel: {monthlyRevenue:n0} euró");<br>
+<br>
+        // 3. feladat: Teljes éves bevétel<br>
+        var totalRevenue = CalculateTotalRevenue(berlesek);<br>
+        Console.WriteLine($"A teljes éves bevétel: {totalRevenue:n0} euró");<br>
+<br>
+        // 4. feladat: Legdrágább bérlés<br>
+        var mostExpensiveRental = FindMostExpensiveRental(berlesek);<br>
+        Console.WriteLine($"A legdrágább bérlés ára: {mostExpensiveRental.TotalPrice:n0} euró");<br>
+<br>
+        // 5. feladat: Bérelhető irodák számának meghatározása<br>
+        var distinctOfficesCount = CountDistinctOffices(berlesek);<br>
+        Console.WriteLine($"Különböző irodák száma: {distinctOfficesCount}");<br>
+<br>
+        // 6. feladat: A leggyakrabban bérelt iroda<br>
+        var mostRentedOffice = FindMostRentedOffice(berlesek);<br>
+        Console.WriteLine($"A leggyakrabban bérelt iroda: {mostRentedOffice.Name}, {mostRentedOffice.Count} bérlés");<br>
+<br>
+        // 7. feladat: Bérlések száma helyszínenként<br>
+        Console.WriteLine("Bérlések helyszínenként:");<br>
+        GroupByLocation(berlesek);<br>
+<br>
+        // 8. feladat: Átlagos bérlési időtartam<br>
+        var avgDuration = CalculateAverageRentalDuration(berlesek);<br>
+        Console.WriteLine($"Az átlagos bérlési időtartam: {avgDuration:F2} nap");<br>
+    }<br>
+<br>
+    public static long CalculateMonthlyRevenue(List<Berles> berlesek, int month)<br>
+    {<br>
+        // Kiszedjük azokat a bérléseket, amikben a hónap bármelyik napján voltak<br>
+        var revenue = berlesek<br>
+            .Where(b => (b.StartDate.Month <= month && b.EndDate.Month >= month)) // Ha a bérlés akár részben is esik a hónapra<br>
+            .Sum(b => b.TotalPrice); // Összeadjuk a bérlések teljes árait<br>
+        return revenue;<br>
+    }<br>
+<br>
+    public static long CalculateTotalRevenue(List<Berles> berlesek)<br>
+    {<br>
+        var totalRevenue = berlesek.Sum(b => b.TotalPrice); // Összesíti az összes bérlés árát<br>
+        return totalRevenue;<br>
+    }<br>
+<br>
+<br>
+    public static Berles FindMostExpensiveRental(List<Berles> berlesek)<br>
+    {<br>
+        var mostExpensive = berlesek<br>
+            .OrderByDescending(b => b.TotalPrice) // Csökkenő sorrendben rendezzük a bérléseket<br>
+            .FirstOrDefault(); // Visszaadjuk a legdrágább bérlést<br>
+        return mostExpensive;<br>
+    }<br>
+<br>
+<br>
+    public static int CountDistinctOffices(List<Berles> berlesek)<br>
+    {<br>
+        var distinctOfficesCount = berlesek.Select(b => b.OfficeId).Distinct().Count(); // Különböző OfficeId-k száma<br>
+        return distinctOfficesCount;<br>
+    }<br>
+<br>
+    public static (string Name, int Count) FindMostRentedOffice(List<Berles> berlesek)<br>
+    {<br>
+        var mostRentedOffice = berlesek<br>
+            .GroupBy(b => b.Name)  // A helyszínek (irodák) alapján csoportosítunk<br>
+            .OrderByDescending(g => g.Count())  // Csökkenő sorrendben rendezzük, hogy a legtöbbször bérelt iroda kerüljön előre<br>
+            .FirstOrDefault();<br>
+<br>
+        // Ha van adat, visszaadjuk a leggyakrabban bérelt iroda nevét és a bérlések számát<br>
+        return mostRentedOffice != null ? (mostRentedOffice.Key, mostRentedOffice.Count()) : ("Nincs adat", 0);<br>
+    }<br>
+<br>
+<br>
+    public static void GroupByLocation(List<Berles> berlesek)<br>
+    {<br>
+        var bookingsByLocation = berlesek<br>
+            .GroupBy(b => b.Name)  // A helyszínek (irodák) alapján csoportosítunk<br>
+            .ToList();<br>
+<br>
+        foreach (var locationGroup in bookingsByLocation)<br>
+        {<br>
+            Console.WriteLine($"{locationGroup.Key}: {locationGroup.Count()} bérlés");<br>
+        }<br>
+    }<br>
+<br>
+    public static double CalculateAverageRentalDuration(List<Berles> berlesek)<br>
+    {<br>
+        // Átlagos bérlési időtartam napokban (StartDate és EndDate közötti különbség + 1, hogy az első nap is számítson)<br>
+        var averageDuration = berlesek<br>
+            .Select(b => (b.EndDate - b.StartDate).Days + 1)  // +1, hogy az első nap is beleszámítson<br>
+            .Average();  // Átlagot számolunk<br>
+        return averageDuration;<br>
+    }<br>
+<br>
+<br>
+}<br>
+<br>
+<br>
+----------------------------------------------------------------------<br>
+<br>
+<br>
+9. A .csv filet 2 helyre lehet tenni. Az egyik ha közvetlenül csak simán bedobod a program.cs és a berles.cs fileok közé. Vagy ha ezen az elérési útvonalon beírod C:\Users\Benjm\source\repos\OfficeRentals\OfficeRentals\bin\Debug\net8.0<br>
+<br>
+<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+<br>
+NEM BIZTOS HOGY TÖKÉLETES A MEGOLDÁS<br>
+<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+<br>
+<br>
+<br>
+A teszt az officerental szerint működik<br>
+<br>
+1. Microsoft Visual Studio nyitása <br>
+<br>
+2. Create New Project gombra kattintva átirányít hogy kiválaszd a projektet<br>
+<br>
+3. A sima console app választása NEM A .NET-ES VERZIÓ<br>
+<br>
+4. ProjectName akármi de ebben az esetben OfficeRentalApp<br>
+<br>
+5. Utánna a next gomb megnyomására megjelenik a Framework ami .8.0 legyen és a Do Not use top-level statements bejelülése (kipipálása)<br>
+<br>
+6. Create<br>
+<br>
+7. Miután kreálódott a projekt egy új osztályt kell létrehozni ami ez esetben amit a program.csben csinálunk csak<br>
+<br>
+8. Ezt kell beleíni<br>
+<br>
+--------------------------------------------------------------<br>
+<br>
+﻿using System;<br>
+using System.Collections.Generic;<br>
+using System.Globalization;<br>
+using System.IO;<br>
+using System.Linq;<br>
+<br>
+namespace RentOffices<br>
+{<br>
+    public class Berles<br>
+    {<br>
+        public int Uid { get; set; }<br>
+        public int OfficeId { get; set; }<br>
+        public DateTime StartDate { get; set; }<br>
+        public DateTime EndDate { get; set; }<br>
+        public int DailyRate { get; set; }<br>
+        public string Name { get; set; }<br>
+        public string City { get; set; }<br>
+<br>
+        public int TotalPrice<br>
+        {<br>
+            get<br>
+            {<br>
+                int days = (EndDate - StartDate).Days + 1;<br>
+                return DailyRate * days;<br>
+            }<br>
+        }<br>
+    }<br>
+<br>
+    class Program<br>
+    {<br>
+        static void Main(string[] args)<br>
+        {<br>
+            var berlesek = new List<Berles>();<br>
+            var lines = File.ReadAllLines("office_rentals_2024.csv");<br>
+            for (int i = 1; i < lines.Length; i++)<br>
+            {<br>
+                var parts = lines[i].Split(',');<br>
+                berlesek.Add(new Berles<br>
+                {<br>
+                    Uid = int.Parse(parts[0]),<br>
+                    OfficeId = int.Parse(parts[1]),<br>
+                    StartDate = DateTime.ParseExact(parts[2], "yyyy-MM-dd", CultureInfo.InvariantCulture),<br>
+                    EndDate = DateTime.ParseExact(parts[3], "yyyy-MM-dd", CultureInfo.InvariantCulture),<br>
+                    DailyRate = int.Parse(parts[4]),<br>
+                    Name = parts[5],<br>
+                    City = parts[6]<br>
+                });<br>
+            }<br>
+<br>
+            Console.Write("Adjon meg egy hónapot (1-12): ");<br>
+            int honap = int.Parse(Console.ReadLine());<br>
+<br>
+            int haviBevetel = berlesek<br>
+                .Where(b => b.StartDate.Month == honap || b.EndDate.Month == honap || (b.StartDate.Month < honap && b.EndDate.Month > honap))<br>
+                .Sum(b => b.TotalPrice);<br>
+<br>
+            Console.WriteLine($"A(z) {honap}. hónap bevétele: {haviBevetel:N0} euró");<br>
+<br>
+            int evesBevetel = berlesek.Sum(b => b.TotalPrice);<br>
+            Console.WriteLine($"A teljes 2024-es éves bevétel: {evesBevetel:N0} euró");<br>
+<br>
+            var legdragabb = berlesek.OrderByDescending(b => b.TotalPrice).First();<br>
+            Console.WriteLine($"A legdrágább bérlés az {legdragabb.Name} irodára történt, teljes ár: {legdragabb.TotalPrice:N0} euró");<br>
+<br>
+            int kulonbozoIrodakSzama = berlesek.Select(b => b.OfficeId).Distinct().Count();<br>
+            Console.WriteLine($"Összesen {kulonbozoIrodakSzama} különböző irodát béreltek ki.");<br>
+<br>
+            var legtobbszorBerelt = berlesek.GroupBy(b => b.Name)<br>
+                .OrderByDescending(g => g.Count())<br>
+                .First();<br>
+            Console.WriteLine($"A legtöbbször bérelt iroda: {legtobbszorBerelt.Key} ({legtobbszorBerelt.Count()} bérlés)");<br>
+<br>
+            Console.WriteLine("Bérlések száma városonként:");<br>
+            var varosok = berlesek.GroupBy(b => b.City)<br>
+                .Select(g => new { Varos = g.Key, Darab = g.Count() });<br>
+            foreach (var v in varosok)<br>
+            {<br>
+                Console.WriteLine($"{v.Varos}: {v.Darab} bérlés");<br>
+            }<br>
+<br>
+            double atlagosIdotartam = berlesek.Average(b => (b.EndDate - b.StartDate).Days + 1);<br>
+            Console.WriteLine($"Átlagos bérlési időtartam: {atlagosIdotartam:F2} nap");<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+----------------------------------------------------------------------<br>
+<br>
+<br>
+9. A .csv filet 2 helyre lehet tenni. Az egyik ha közvetlenül csak simán bedobod a program.cs és a berles.cs fileok közé. Vagy ha ezen az elérési útvonalon beírod C:\Users\GGGGG\source\repos\OfficeRentals\OfficeRentals\bin\Debug\net8.0<br>
+<p>
+<h2>Console 2 csv</h2>
+A teszt az officerental szerint működik<br>
+<br>
+1. Microsoft Visual Studio nyitása <br>
+<br>
+2. Create New Project gombra kattintva átirányít hogy kiválaszd a projektet<br>
+<br>
+3. A sima console app választása NEM A .NET-ES VERZIÓ<br>
+<br>
+4. ProjectName akármi de ebben az esetben OfficeRentalApp<br>
+<br>
+5. Utánna a next gomb megnyomására megjelenik a Framework ami .8.0 legyen és a Do Not use top-level statements bejelülése (kipipálása)<br>
+<br>
+6. Create<br>
+<br>
+7. Miután kreálódott a projekt mivel van 2 csv ezeket ide kell helyezni (mindkettőt) C:\Users\Benjm\source\repos\CarsConsole\CarsConsole\bin\Debug\net8.0<br>
+<br>
+8. A program.cs kívül két class-t kell csinálni <br>
+<br>
+8/1. A car class<br>
+<br>
+--------------------------------------------------------<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Text;<br>
+using System.Threading.Tasks;<br>
+<br>
+namespace CarsConsole<br>
+{<br>
+    public class Car<br>
+    {<br>
+        public int Id { get; set; }<br>
+        public string Brand { get; set; }<br>
+        public string Model { get; set; }<br>
+        public string LicensePlate { get; set; }<br>
+        public int Year { get; set; }<br>
+        public int DailyPrice { get; set; }<br>
+<br>
+        public Car(string line)<br>
+        {<br>
+            string[] row = line.Split(",");<br>
+<br>
+            Id = int.Parse(row[0]);<br>
+            Brand = row[1];<br>
+            Model = row[2];<br>
+            LicensePlate = row[3];<br>
+            Year = int.Parse(row[4]);<br>
+            DailyPrice = int.Parse(row[5]);<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+------------------------------------------------------<br>
+<br>
+<br>
+8/2. A Booking class<br>
+<br>
+<br>
+-------------------------------------------------------<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Globalization;<br>
+using System.Linq;<br>
+using System.Text;<br>
+using System.Threading.Tasks;<br>
+<br>
+namespace CarsConsole<br>
+{<br>
+    public class Booking<br>
+    {<br>
+        public int Id { get; set; }<br>
+        public DateTime StartDate { get; set; }<br>
+        public DateTime EndDate { get; set; }<br>
+        public int CarId { get; set; }<br>
+        public int TotalPrice { get; set; }<br>
+        public string UserUID { get; set; }<br>
+<br>
+        public Booking(string line)<br>
+        {<br>
+            string[] row = line.Split(",");<br>
+            Id = int.Parse(row[0]);<br>
+            StartDate = DateTime.ParseExact(row[1], "yyyy-MM-dd", CultureInfo.InvariantCulture);<br>
+            EndDate = DateTime.ParseExact(row[2], "yyyy-MM-dd", CultureInfo.InvariantCulture);<br>
+            CarId = int.Parse(row[3]);<br>
+            TotalPrice = int.Parse(row[4]);<br>
+            UserUID = row[5];<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+---------------------------------------------------<br>
+<br>
+<br>
+9. A program.cs-be kell írni ezt <br>
+<br>
+<br>
+---------------------------------------------------<br>
+<br>
+using CarsConsole;<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Globalization;<br>
+using System.IO;<br>
+using System.Linq;<br>
+<br>
+<br>
+namespace CarBookingApp<br>
+{<br>
+    class Program<br>
+    {<br>
+        static void Main(string[] args)<br>
+        {<br>
+            //File beolvasás<br>
+            List<Car> cars = new List<Car>();<br>
+            foreach (var item in File.ReadAllLines("cars.csv").Skip(1))<br>
+            {<br>
+                cars.Add(new Car(item));<br>
+            }<br>
+            List<Booking> bookings = new List<Booking>();<br>
+            foreach (var item in File.ReadAllLines("bookings.csv").Skip(1))<br>
+            {<br>
+                bookings.Add(new Booking(item));<br>
+            }<br>
+<br>
+            //Feladatok<br>
+            var sortedCars = cars.OrderByDescending(car => car.DailyPrice);<br>
+            Console.WriteLine("1. feladat - Az autók napi bérleti díjja csökkenő sorrendben:");<br>
+            foreach (var car in sortedCars)<br>
+            {<br>
+                Console.WriteLine($"{car.Brand} {car.Model} {car.DailyPrice}");<br>
+            }<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("2. feladat - Az összes foglalás (autó márkával + bérleti díjjal):");<br>
+            foreach (var booking in bookings)<br>
+            {<br>
+                var car = cars.FirstOrDefault(car => car.Id == booking.CarId);<br>
+                if (car != null)<br>
+                {<br>
+                    Console.WriteLine($"{car.Brand} {car.Model} {car.LicensePlate} {booking.TotalPrice}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("3. feladat - Melyik autót foglalták le a legtöbbször:");<br>
+            <br>
+            var mostBooking = bookings.GroupBy(b => b.CarId)<br>
+                                       .OrderByDescending(g => g.Count())<br>
+                                       .FirstOrDefault();<br>
+            if (mostBooking != null)<br>
+            {<br>
+                var carMostBooking = cars.FirstOrDefault(c => c.Id == mostBooking.Key);<br>
+                if (carMostBooking != null)<br>
+                {<br>
+                    Console.WriteLine($"{carMostBooking.Id} {carMostBooking.Brand} {carMostBooking.Model}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("4. feladat - A legtöbb bevételt hozó autó:");<br>
+            var mostIncomeCarId = bookings.GroupBy(b => b.CarId)<br>
+                                           .OrderByDescending(x => x.Sum(d => d.TotalPrice))<br>
+                                           .FirstOrDefault();<br>
+            if (mostIncomeCarId != null)<br>
+            {<br>
+                var mostIncomeCar = cars.FirstOrDefault(c => c.Id == mostIncomeCarId.Key);<br>
+                if (mostIncomeCar != null)<br>
+                {<br>
+                    Console.WriteLine($"{mostIncomeCar.Id} {mostIncomeCar.Brand} {mostIncomeCar.Model} {mostIncomeCar.LicensePlate}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("5. feladat - Az átlagos bérleti időtartam");<br>
+            var avgDays = bookings.Select(b => (b.EndDate - b.StartDate).Days).Average();<br>
+            Console.WriteLine(avgDays);<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("6. feladat - A legutóbb foglalt autó adatai");<br>
+            var lastBooking = bookings.OrderByDescending(b => b.StartDate).FirstOrDefault();<br>
+            if (lastBooking != null)<br>
+            {<br>
+                var lastBookingCar = cars.FirstOrDefault(c => c.Id == lastBooking.CarId);<br>
+                if (lastBookingCar != null)<br>
+                {<br>
+                    Console.WriteLine($"{lastBooking.StartDate:yyyy.MM.dd} {lastBookingCar.Brand} {lastBookingCar.Model} {lastBookingCar.LicensePlate} {lastBookingCar.Year} {lastBookingCar.DailyPrice}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("7. feladat - Az összes foglalásból származó teljes bevétel");<br>
+            var fullIncome = bookings.Select(b => b.TotalPrice).Sum();<br>
+            Console.WriteLine(fullIncome);<br>
+<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("8. feladat - Listázás:");<br>
+<br>
+            var monthlyBookings = bookings<br>
+                .GroupBy(b => b.StartDate.ToString("yyyy-MM", CultureInfo.InvariantCulture))<br>
+                .OrderBy(g => g.Key);<br>
+<br>
+            using (StreamWriter writer = new StreamWriter("foglalasok.csv"))<br>
+            {<br>
+                writer.WriteLine("Month, CarId, StartDate, EndDate, TotalPrice");<br>
+<br>
+                foreach (var group in monthlyBookings)<br>
+                {<br>
+                    foreach (var booking in group)<br>
+                    {<br>
+                        writer.WriteLine($"{group.Key}, {booking.CarId}, {booking.StartDate:yyyy.MM.dd}, {booking.EndDate:yyyy.MM.dd}, {booking.TotalPrice}");<br>
+                    }<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("A foglalások havi bontásban kiírva a 'foglalasok.csv' fájlba.");<br>
+<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("9. feladat");<br>
+<br>
+            var carIncome = bookings<br>
+                .GroupBy(b => b.CarId)<br>
+                .Select(g => new<br>
+                {<br>
+                    CarId = g.Key,<br>
+                    TotalIncome = g.Sum(b => b.TotalPrice)<br>
+                })<br>
+                .OrderByDescending(x => x.TotalIncome);<br>
+<br>
+            using (StreamWriter writer = new StreamWriter("bevetes.csv"))<br>
+            {<br>
+                writer.WriteLine("CarId, TotalIncome");<br>
+<br>
+                foreach (var item in carIncome)<br>
+                {<br>
+                    writer.WriteLine($"{item.CarId}, {item.TotalIncome}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("Az autóként összesített bevételek kiírva a 'bevetes.csv' fájlba.");<br>
+<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("10. feladat");<br>
+<br>
+            var unusedCars = cars.Where(car => !bookings.Any(b => b.CarId == car.Id)).ToList();<br>
+<br>
+            using (StreamWriter writer = new StreamWriter("nemhasznalt.csv"))<br>
+            {<br>
+                writer.WriteLine("Id, Brand, Model, LicensePlate, Year, DailyPrice");<br>
+<br>
+                foreach (var car in unusedCars)<br>
+                {<br>
+                    writer.WriteLine($"{car.Id}, {car.Brand}, {car.Model}, {car.LicensePlate}, {car.Year}, {car.DailyPrice}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("A nem használt autók kiírva a 'nemhasznalt.csv' fájlba.");<br>
+<br>
+<br>
+            Console.WriteLine("---------------------------------------------------------------");<br>
+            Console.WriteLine("11. feladat");<br>
+<br>
+            var averageDailyPriceByBrand = cars<br>
+                .GroupBy(c => c.Brand)<br>
+                .Select(g => new<br>
+                {<br>
+                    Brand = g.Key,<br>
+                    AveragePrice = g.Average(c => c.DailyPrice)<br>
+                })<br>
+                .OrderBy(x => x.Brand);<br>
+<br>
+            using (StreamWriter writer = new StreamWriter("berkat.csv"))<br>
+            {<br>
+                writer.WriteLine("Brand, AverageDailyPrice");<br>
+<br>
+                foreach (var item in averageDailyPriceByBrand)<br>
+                {<br>
+                    writer.WriteLine($"{item.Brand}, {item.AveragePrice:F2}");<br>
+                }<br>
+            }<br>
+<br>
+            Console.WriteLine("Az autók átlagos napi bérleti díja márkánként kiírva a 'berkat.csv' fájlba.");<br>
+<br>
+<br>
+<br>
+<br>
+        }<br>
+<br>
+    }<br>
+}<br>
+<br>
+<br>
+----------------------------------------------------------------------------------- <br>
 `
   };
 
@@ -1552,7 +2171,7 @@ namespace OfficesAPI<br>
       </section>
 
         <section onClick={() => handleClick("$4J4T$")}>
-        <h1>$4J4T$</h1>
+        <h1>$$$$$</h1>
       </section>
 
       {/* Pop-up ablak */}
