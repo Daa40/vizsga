@@ -2131,6 +2131,587 @@ namespace CarBookingApp<br>
 <br>
 <br>
 ----------------------------------------------------------------------------------- <br>
+<p>
+<h2>Frontend</h2><br>
+Az officesrental alapján készült <br>
+<br>
+1. Az első hogy csinálni kell egy mappát bármilyen névvel aztán a mappán belül egy cmd nyitása<br>
+<br>
+2. A parancs amit ki kell adni egy Angular Projekt generáláshoz az ng n OfficeFrontend --standalone=false. Itt fontos hogy az ng n után lévő név bármi lehet de a <br>
+--standalone=false kötelező mert anélkül rengeteg minden nem működik<br>
+<br>
+3. Amikor a parancs ki lett adva akkor sok dolgot kér a telepítésnél vagyis a kreálásnál<br>
+<br>
+3/1. A google-s kérdésnél mindegy mit nyomsz de ajánlott no mert itt csak a Google felügyelet alávételéről kérdez<br>
+<br>
+3/2. Utánna rákérdez hogy milyen legyen a stylesheet format aminél ajánlott a CSS-t kell megnyomni<br>
+<br>
+3/3. Megkérdezi hogy legyen Server-Side Rendering amire a válasz no vagyis nem <br>
+<br>
+4. Utánna miután kreálódott a projekt kell egy ng add @ng-bootstrap/ng-bootstrap@17.0.0 (de nekem csak a 18.00-as verzióval működik ezért elég lehagyni a @17.0.0 részt)<br>
+<br>
+5. Miután megtörtént a bootstrap telepítése kell kiadni ezeket a parancsokat <br>
+<br>
+5/1. Az egyik az ng g c OfficesLists, a másik az ng g c Home, a harmadik a ng g c Navbar<br>
+<br>
+5/2. Itt is folytatódik az előző menet amikor is nem komponenseket hanem service-t csinálunk. Az első parancs ng g s Base. <br>
+<br>
+6. A code . parancs kiadása és a visual studio code megnyitása<br>
+<br>
+7. Az angular.json fileban a "styles": [<br>
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",<br>
+              "src/styles.css"<br>
+            ],<br>
+résznél a "node_modules/bootstrap/dist/css/bootstrap.min.css" kimásolása és beillesztése az alatta lévő "scripts": [] részbe. De fontos hogy át kell írni a css részeket js-re<br>
+és a min-t és bundle-re szóval így kell hogy kinézzen "scripts": [  "node_modules/bootstrap/dist/js/bootstrap.bundle.js"]<br>
+<br>
+----------------------------------------<br>
+angular.json<br>
+<br>
+{<br>
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",<br>
+  "version": 1,<br>
+  "newProjectRoot": "projects",<br>
+  "projects": {<br>
+    "OfficeFrontend": {<br>
+      "projectType": "application",<br>
+      "schematics": {<br>
+        "@schematics/angular:component": {<br>
+          "standalone": false<br>
+        },<br>
+        "@schematics/angular:directive": {<br>
+          "standalone": false<br>
+        },<br>
+        "@schematics/angular:pipe": {<br>
+          "standalone": false<br>
+        }<br>
+      },<br>
+      "root": "",<br>
+      "sourceRoot": "src",<br>
+      "prefix": "app",<br>
+      "architect": {<br>
+        "build": {<br>
+          "builder": "@angular-devkit/build-angular:application",<br>
+          "options": {<br>
+            "outputPath": "dist/office-frontend",<br>
+            "index": "src/index.html",<br>
+            "browser": "src/main.ts",<br>
+            "polyfills": [<br>
+              "zone.js",<br>
+              "@angular/localize/init"<br>
+            ],<br>
+            "tsConfig": "tsconfig.app.json",<br>
+            "assets": [<br>
+              {<br>
+                "glob": "**/*",<br>
+                "input": "public"<br>
+              }<br>
+            ],<br>
+            "styles": [<br>
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",<br>
+              "src/styles.css"<br>
+            ],<br>
+            "scripts": [  "node_modules/bootstrap/dist/js/bootstrap.bundle.js"]<br>
+          },<br>
+          "configurations": {<br>
+            "production": {<br>
+              "budgets": [<br>
+                {<br>
+                  "type": "initial",<br>
+                  "maximumWarning": "500kB",<br>
+                  "maximumError": "1MB"<br>
+                },<br>
+                {<br>
+                  "type": "anyComponentStyle",<br>
+                  "maximumWarning": "2kB",<br>
+                  "maximumError": "4kB"<br>
+                }<br>
+              ],<br>
+              "outputHashing": "all"<br>
+            },<br>
+            "development": {<br>
+              "optimization": false,<br>
+              "extractLicenses": false,<br>
+              "sourceMap": true<br>
+            }<br>
+          },<br>
+          "defaultConfiguration": "production"<br>
+        },<br>
+        "serve": {<br>
+          "builder": "@angular-devkit/build-angular:dev-server",<br>
+          "configurations": {<br>
+            "production": {<br>
+              "buildTarget": "OfficeFrontend:build:production"<br>
+            },<br>
+            "development": {<br>
+              "buildTarget": "OfficeFrontend:build:development"<br>
+            }<br>
+          },<br>
+          "defaultConfiguration": "development"<br>
+        },<br>
+        "extract-i18n": {<br>
+          "builder": "@angular-devkit/build-angular:extract-i18n"<br>
+        },<br>
+        "test": {<br>
+          "builder": "@angular-devkit/build-angular:karma",<br>
+          "options": {<br>
+            "polyfills": [<br>
+              "zone.js",<br>
+              "zone.js/testing",<br>
+              "@angular/localize/init"<br>
+            ],<br>
+            "tsConfig": "tsconfig.spec.json",<br>
+            "assets": [<br>
+              {<br>
+                "glob": "**/*",<br>
+                "input": "public"<br>
+              }<br>
+            ],<br>
+            "styles": [<br>
+              "src/styles.css"<br>
+            ],<br>
+            "scripts": []<br>
+          }<br>
+        }<br>
+      }<br>
+    }<br>
+  }<br>
+}<br>
+<br>
+---------------------------------------------------------------<br>
+<br>
+8. Miután az átírások megtörténtek az mappékon belül az src-re kattintva és azon belül az app fül és azon belül app.module.ts<br>
+<br>
+9. Az app.module.ts-en belül a providers-be bele kell írni a provideHttpClient()-et szóval így kell kinézzen providers: [provideHttpClient()], és fontos hogy legyen <br>
+beimportálva az oldal tetején is ami így kell kinézzen import { provideHttpClient } from '@angular/common/http';<br>
+<br>
+10. Utánna felette az imports részbe be kell írni hogy FormsModule nyilván ott is figyelni hogy be legyen importálva. Szóval így kell kinézzen<br>
+  imports: [<br>
+    BrowserModule,<br>
+    AppRoutingModule,<br>
+    NgbModule, <br>
+    FormsModule<br>
+  ],<br>
+<br>
+és az import meg így import { FormsModule } from '@angular/forms';<br>
+<br>
+----------------------------------------------------------<br>
+app.module.ts<br>
+<br>
+import { NgModule } from '@angular/core';<br>
+import { BrowserModule } from '@angular/platform-browser';<br>
+<br>
+import { AppRoutingModule } from './app-routing.module';<br>
+import { AppComponent } from './app.component';<br>
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';<br>
+import { OfficesListsComponent } from './offices-lists/offices-lists.component';<br>
+import { HomeComponent } from './home/home.component';<br>
+import { NavbarComponent } from './navbar/navbar.component';<br>
+import { provideHttpClient } from '@angular/common/http';<br>
+import { FormsModule } from '@angular/forms';<br>
+<br>
+@NgModule({<br>
+  declarations: [<br>
+    AppComponent,<br>
+    OfficesListsComponent,<br>
+    HomeComponent,<br>
+    NavbarComponent<br>
+  ],<br>
+  imports: [<br>
+    BrowserModule,<br>
+    AppRoutingModule,<br>
+    NgbModule,<br>
+    FormsModule<br>
+  ],<br>
+  providers: [provideHttpClient()],<br>
+  bootstrap: [AppComponent]<br>
+})<br>
+export class AppModule { }<br>
+<br>
+---------------------------------------------------------------<br>
+<br>
+11. Utánna az app-routing.module.ts-be kell a const routes: Routes = []; részbe beleírni a következőt és így kell kinézzen és fontosak az importok is hogy meglegyenek<br>
+const routes: Routes = [<br>
+  {path:"", component: HomeComponent},<br>
+  {path:"", component: OfficesListsComponent},<br>
+];<br>
+<br>
+Az importok<br>
+import { OfficesListsComponent } from './offices-lists/offices-lists.component';<br>
+import { HomeComponent } from './home/home.component';<br>
+<br>
+12. Miután ezek megtörténtek az app.component.html-ben található adatok teljes kitörlése cntrl+a és delete gomb megnyomásával <br>
+<br>
+13. A html-be ezt kell írni <br>
+------------------------------------ <br>
+&lt;app-navbar&gt;&lt;/app-navbar&gt; <br>
+&lt;div class="container"&gt;<br>
+&lt;  <router-outlet>&lt;/router-outlet&gt;<br>
+&lt;/div&gt;<br>
+<br>
+-----------------------------------<br>
+<br>
+14. Utánna a navbar mappában a navbar.component.html-t kell módosítani úgy hogy egy esetleges bootstrap oldaláról lehalászott navbart teszel be vagy ezt<br>
+---------------------------------------<br>
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4"&gt;<br>
+&lt;    div class="container-fluid"&gt;<br>
+&lt;      a class="navbar-brand" href="#"&gt;Office Sphere&lt;/a&gt;<br>
+&lt;      button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"&gt;<br>
+&lt;        span class="navbar-toggler-icon"&gt;&lt;/span&gt;<br>
+&lt;      /button&gt;<br>
+&lt;      div class="collapse navbar-collapse" id="navbarSupportedContent"&gt;<br>
+&lt;        ul class="navbar-nav me-auto mb-2 mb-lg-0"&gt;<br>
+&lt;          li class="nav-item"&gt;<br>
+&lt;            a class="nav-link active" aria-current="page" routerLink="offices"&gt;Rent Office&lt;/a&gt;<br>
+&lt;          /li&gt;<br>
+&lt;        /ul&gt;<br>
+&lt;        form class="d-flex"&gt;<br>
+&lt;          input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"&gt;<br>
+&lt;          button class="btn btn-outline-success" type="submit"&gt;Search&lt;/button&gt;<br>
+&lt;        /form&gt;<br>
+&lt;      /div&gt;<br>
+&lt;    /div&gt;<br>
+&lt;/nav&gt;<br>
+<br>
+--------------------------------------<br>
+<br>
+15. Utánna a home mappában a home.component.css megnyitása ami így néz ki <br>
+---------------------------------------<br>
+&lt;.header{&gt;<br>
+&lt;    width:30%!important; &gt;<br>
+&lt;}&gt;<br>
+&lt;.cim{&gt;<br>
+&lt;    margin:0!important;&gt;<br>
+&lt;    padding:0!important;&gt;<br>
+&lt;    line-height: .8;&gt;<br>
+&lt;}&gt;<br>
+&lt;.green{&gt;<br>
+&lt;    color: #72dd78 !important;&gt;<br>
+&lt;}&gt;<br>
+&lt;.lead{&gt;<br>
+&lt;    margin-top: 2rem;&gt;<br>
+&lt;}&gt;<br>
+&lt;.box h2{&gt;<br>
+&lt;    margin:0!important;&gt;<br>
+&lt;}&gt;<br>
+&lt;.box h2::first-letter {&gt;<br>
+&lt;    color: #72dd78;&gt;<br>
+&lt;    font-size: 100px;&gt;<br>
+&lt;    font-weight: 700;&gt;<br>
+&lt;}&gt;<br>
+&lt;.box .lead{&gt;<br>
+&lt;    margin-top: 0!important;&gt;<br>
+&lt;}&gt;<br>
+<br>
+--------------------------------------<br>
+<br>
+16. Aztán ugyanebben a mappában a home.component.html így kell hogy kinézzen<br>
+-----------------------------------<br>
+&lt;div class="container"&gt;<br>
+&lt;    div class="row my-5"&gt;<br>
+&lt;        div class="col-12 col-md-6 mb-3"&gt;<br>
+&lt;            p class="cim display-4"&gt;The Best&lt;/p&gt;<br>
+&lt;            p class="cim fw-bold display-4"&gt;Private Office Experience, Luxury in the City.&lt;/p&gt;<br>
+&lt;            p class="cim green fw-bold display-4"&gt;GlobalSpaces&lt;/p&gt;<br>
+&lt;            p class="d-none d-lg-block lead"&gt;<br>
+&lt;                GlobalSpaces brings you the magic of premium private office experiences!&gt;<br>
+&lt;                We all know the chaos that comes with crowded co-working spaces and the hassle of finding suitable meeting rooms – endless hours spent on bookings, logistics, and compromises.&gt;<br>
+&lt;                Why not choose complete freedom and comfort instead?&gt;<br>
+&lt;                Enjoy your own private office space with your team, clients, or partners – the true meaning of professional productivity and peace of mind.&gt;<br>
+&lt;            /p&gt;<br>
+&lt;        /div&gt;<br>
+&lt;        div class="col-12 col-md-6"&gt;<br>
+&lt;            img src="/assets/office1.jpg" class="img-fluid" alt="Office Space 1"&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+<br>
+&lt;    div class="row my-5"&gt;<br>
+&lt;        div class="col-12 col-md-6 order-2 order-md-1"&gt;<br>
+&lt;            img src="/assets/office2.jpg" class="img-fluid" alt="Office Space 2"&gt;<br>
+&lt;        /div&gt;<br>
+&lt;        div class="box col-12 col-md-6 order-1"&gt;<br>
+&lt;            h2&gt;About Us&lt;/h2&gt;<br>
+&lt;            h5&gt;GlobalSpaces – Redefining Office Rentals&lt;/h5&gt;<br>
+&lt;            p class="lead"&gt;<br>
+&lt;                GlobalSpaces embodies modern luxury and flexibility in workspace solutions.&gt;<br>
+&lt;                Our network features meticulously selected, world-class office spaces, offering the perfect environment for daily work, corporate events, client meetings, or project collaborations.&gt;<br>
+&lt;                Whether you're looking for a short-term spot or a long-term base, you'll find the ideal office with us – complete with personalized services, premium facilities, and professional support.&gt;<br>
+&lt;                Experience unlimited productivity and maximum comfort with GlobalSpaces.&gt;<br>
+&lt;            /p&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+<br>
+&lt;    div class="row my-5"&gt;<br>
+&lt;        div class="box col-12 col-md-6"&gt;<br>
+&lt;            h2&gt;Offices&lt;/h2&gt;<br>
+&lt;            h5&gt;The World's Finest Offices for Your Perfect Workdays&lt;/h5&gt;<br>
+&lt;            p class="lead"&gt;<br>
+&lt;                Our collection of office spaces perfectly blends modern design and professional elegance.&gt;<br>
+&lt;                Whether you seek sleek private offices, dynamic co-working areas, or prestigious corporate suites – we offer a wide selection to meet every business need.&gt;<br>
+&lt;                Our offices feature the latest technology, spacious workstations, meeting rooms, relaxation zones, and premium amenities.&gt;<br>
+&lt;                Let our expert team help you find the perfect office space to make every workday truly exceptional!&gt;<br>
+&lt;            /p&gt;<br>
+&lt;        /div&gt;<br>
+&lt;        div class="col-12 col-md-6"&gt;<br>
+&lt;            img src="/assets/office3.png" class="img-fluid" alt="Office Space 3"&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+<br>
+-----------------------------------<br>
+<br>
+17. Miután ez megtörtént a projekt public mappájában kell egy új mappát létrehozni ami az assets és ide kerülnek a képek <br>
+C:\Users\Desktop\Programozás jegyzetek\Frontend\Frontend\OfficeFrontend\public<br>
+<br>
+18. Ezután a base.service.ts-be kell a konstruktorba írni és így kell kinézzen az egész <br>
+----------------------------------------------------<br>
+import { HttpClient } from '@angular/common/http';<br>
+import { Injectable } from '@angular/core';<br>
+<br>
+@Injectable({<br>
+  providedIn: 'root'<br>
+})<br>
+export class BaseService {<br>
+  officesApi="https://p161-7ddfd-default-rtdb.europe-west1.firebasedatabase.app/offices.json"<br>
+  constructor(private http:HttpClient) { }<br>
+    getOffices(){<br>
+    return this.http.get(this.officesApi)<br>
+  }<br>
+  postOfficeRental(body:any){<br>
+    return this.http.post("https://localhost:7086/api/Berlesek", body)<br>
+  }<br>
+}<br>
+-----------------------------------------------------<br>
+<br>
+19. Aztán az offices-list.component.css-be kell írni és így kell hogy kinézzen <br>
+-----------------------------------------------------<br>
+&lt;.custom-day {&gt;<br>
+&lt;    text-align: center;&gt;<br>
+&lt;    padding: 0.185rem 0.25rem;&gt;<br>
+&lt;    display: inline-block;&gt;<br>
+&lt;    height: 2rem;&gt;<br>
+&lt;    width: 2rem;&gt;<br>
+&lt;}&gt;<br>
+&lt;.custom-day.focused {&gt;<br>
+&lt;    background-color: #e6e6e6;&gt;<br>
+&lt;}&gt;<br>
+&lt;.custom-day.range,&gt;<br>
+&lt;.custom-day:hover {&gt;<br>
+&lt;    background-color: rgb(114, 221, 120);&gt;<br>
+&lt;    color: white;&gt;<br>
+&lt;}&gt;<br>
+&lt;.custom-day.faded {&gt;<br>
+&lt;    background-color: rgba(114, 221, 120,.5)&gt;<br>
+&lt;}&gt;<br>
+&lt;button{&gt;<br>
+&lt;    background-color:  rgba(114, 221, 120,1)!important;&gt;<br>
+&lt;    border: 1px solid rgb(114, 221, 120)!important ;&gt;<br>
+&lt;}&gt;<br>
+<br>
+<br>
+-----------------------------------------------------<br>
+<br>
+20. Utánna meg az offices-lists.component.ts-be kell ezeket beleírni<br>
+..................................................<br>
+import { HttpErrorResponse } from '@angular/common/http';<br>
+import { Component, inject } from '@angular/core';<br>
+import { NgbCalendar, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';<br>
+import { BaseService } from '../base.service';<br>
+<br>
+@Component({<br>
+  selector: 'app-offices-lists',<br>
+  templateUrl: './offices-lists.component.html',<br>
+  styleUrl: './offices-lists.component.css'<br>
+})<br>
+export class OfficesListsComponent {<br>
+ calendar = inject(NgbCalendar);<br>
+  date: NgbDate | null = null;<br>
+  hoveredDate: NgbDate | null = null;<br>
+  fromDate: NgbDate = this.calendar.getNext(this.calendar.getToday(),'d',1);<br>
+  toDate: NgbDate |null = this.calendar.getNext(this.fromDate, 'd', 2);<br>
+  <br>
+  offices:any<br>
+  newRental:any={}<br>
+  // rentals:any<br>
+  error=false<br>
+  success=false<br>
+  errorMessage:any<br>
+  cart:any=null<br>
+  <br>
+  <br>
+  constructor(private base:BaseService){<br>
+    this.base.getOffices().subscribe(<br>
+      (j)=>this.offices=j<br>
+    )<br>
+  }<br>
+  <br>
+  addCart(office:any){<br>
+    this.cart=office;  <br>
+  }<br>
+  <br>
+  deleteItem(){<br>
+    this.cart=null<br>
+  }<br>
+  <br>
+  <br>
+  <br>
+  postRental(){<br>
+   const body={<br>
+      uid:"101",<br>
+      startDate: this.ngbDateToDateString(this.fromDate),<br>
+      endDate: this.toDate?this.ngbDateToDateString(this.toDate):0,<br>
+      officeId:this.cart.id,<br>
+      dailyRate:this.cart.daily_price,<br>
+      baseFee:this.cart.base_fee<br>
+      }<br>
+   <br>
+    console.log(body)<br>
+    this.base.postOfficeRental(body).subscribe(<br>
+      {<br>
+        next:(a)=>{<br>
+          this.error=false<br>
+          this.success=true;<br>
+      },<br>
+      error: (e: HttpErrorResponse) => {<br>
+            console.log("hiba", e)<br>
+            this.success = false;<br>
+            this.error = true;       <br>       
+            const statusCode = e.status; <br>     
+           <br>
+            const serverMessage = typeof e.error === 'string'<br>
+              ? e.error<br>
+              : e.error?.message || 'An unknown error occurred.' <br>
+            this.errorMessage=serverMessage             <br>
+      }})  <br>
+  }<br>
+  <br>
+  onDateSelection(date: NgbDate) {<br>
+    if (!this.fromDate && !this.toDate) {<br>
+      this.fromDate = date;<br>
+    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {<br>
+      this.toDate = date;<br>
+    } else {<br>
+      this.toDate = null;<br>
+      this.fromDate = date;<br>
+    }<br>
+  }<br>
+  <br>
+  isHovered(date: NgbDate) {<br>
+    return (<br>
+      this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)<br>
+    );<br>
+  }<br>
+  <br>
+  isInside(date: NgbDate) {<br>
+    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);<br>
+  }<br>
+  <br>
+  isRange(date: NgbDate) {<br>
+    return (<br>
+      date.equals(this.fromDate) ||<br>
+      (this.toDate && date.equals(this.toDate)) ||<br>
+      this.isInside(date) ||<br>
+      this.isHovered(date)<br>
+    );<br>
+  }<br>
+  <br>
+  ngbDateToDateString(ngbDate: NgbDateStruct): string {<br>
+    const year = ngbDate.year;<br>
+    const month = String(ngbDate.month).padStart(2, '0');<br>
+    const day = String(ngbDate.day).padStart(2, '0');<br>
+    const s= ${year}-${month}-${day} ide kell egy `` a year elé és a day után <br>
+    return s; <br>
+  }<br>
+}<br>
+.......................................................<br>
+<br>
+21. Aztán az offices-list.component.html-be kell beleírni ezt<br>
+.......................................................<br>
+    <br>
+    <br>
+   &lt;div class="container"&gt;<br>
+&lt;    div id="wrapper"&gt;<br>
+&lt;        h2 class="display-2 my-5"&gt;Office Rentals&lt;/h2&gt;<br>
+&lt;        div id="calendar"&gt;<br>
+&lt;            ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="hidden"&gt;<br>
+&lt;            /ngb-datepicker&gt;<br>
+&lt;            ng-template #t let-date let-focused="focused"&gt;<br>
+&lt;              span<br>
+&lt;                class="custom-day"&gt;<br>
+&lt;                [class.focused]="focused"&gt;<br>
+&lt;                [class.range]="isRange(date)"&gt;<br>
+&lt;                [class.faded]="isHovered(date) || isInside(date)"&gt;<br>
+&lt;                (mouseenter)="hoveredDate = date"&gt;<br>
+&lt;                (mouseleave)="hoveredDate = null"&gt;<br>
+&lt;                {{ date.day }}&gt;<br>
+&lt;              /span&gt;<br>
+&lt;            /ng-template&gt;<br>
+&lt;        /div&gt;<br>
+&lt;        div *ngIf="cart" id="cart"&gt;<br>
+&lt;            h4 class="mt-4"&gt;Selected Offices&lt;/h4&gt;<br>
+&lt;            div class="row my-1"&gt;<br>
+&lt;              div class="col"&gt;{{cart.name}}&lt;/div&gt;<br>
+&lt;              div class="col"&gt;{{cart.address}}&lt;/div&gt;<br>
+&lt;              div class="col"&gt;{{cart.daily_price}} € / day&lt;/div&gt;<br>
+&lt;              div class="col"&gt;{{cart.base_fee}} € base fee&lt;/div&gt;<br>
+&lt;              div class="col"&gt;<br>
+&lt;                button (click)="deleteItem()" type="button" class="btn btn-primary btn-sm"&gt;Remove&lt;/button&gt;<br>
+&lt;              /div&gt;<br>
+&lt;              div class="d-none d-md-block col"&gt;&lt;/div&gt;<br>
+&lt;              div class="d-none d-md-block col"&gt;&lt;/div&gt;<br>
+&lt;              div class="d-none d-md-block col"&gt;&lt;/div&gt;<br>
+&lt;              div class="d-none d-md-block col"&gt;&lt;/div&gt;<br>
+&lt;            /div&gt;<br>
+&lt;            hr&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+&lt;    div class="my-5"&gt;<br>
+&lt;        div *ngIf="error" class="alert alert-danger" role="alert"&gt;<br>
+&lt;            h3&gt;Reservation Failed&lt;/h3&gt;<br>
+&lt;            p&gt;{{errorMessage}}&lt;/p&gt;<br>
+&lt;        /div&gt;<br>
+&lt;        div *ngIf="success" class="alert alert-success" role="alert"&gt;<br>
+&lt;            h3&gt;Reservation Successful&lt;/h3&gt;<br>
+&lt;            p&gt;Wishing you a productive time!&lt;/p&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+&lt;    button type="button" (click)="postRental()" [disabled]="!cart" class="btn btn-primary my-2"&gt;Submit Reservation&lt;/button&gt;<br>
+&lt;    div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 my-3"&gt;<br>
+&lt;        div *ngFor="let office of offices" class="col"&gt;<br>
+&lt;            div class="card h-100"&gt;<br>
+&lt;              img [src]="office.image" class="card-img-top" [alt]="office.name"&gt;<br>
+&lt;              div class="card-body"&gt;<br>
+&lt;                h5 class="card-title"&gt;{{office.name}}&lt;/h5&gt;<br>
+&lt;                h6 class="card-title"&gt;Address: {{office.address}}&lt;/h6&gt;<br>
+&lt;                div class="row text-center mt-3"&gt;<br>
+&lt;                  div class="col"&gt;Area (m²)&lt;/div&gt;<br>
+&lt;                /div&gt;<br>
+&lt;                div class="row text-center mt-1"&gt;<br>
+&lt;                  div class="col"&gt;{{office.area_m2}}&lt;/div&gt;<br>
+&lt;                /div&gt;<br>
+&lt;                p class="mt-3"&gt;<br>
+&lt;                  Base Fee: {{office.base_fee}} €&gt;<br>
+&lt;                /p&gt;<br>
+&lt;                p&gt;<br>
+&lt;                  Daily Price: {{office.daily_price}} € / day&gt;<br>
+&lt;                /p&gt;<br>
+&lt;              /div&gt;<br>
+&lt;              div class="card-footer"&gt;<br>
+&lt;                small class="text-muted"&gt;<br>
+&lt;                  button (click)="addCart(office)" type="button" class="btn btn-primary"&gt;Reserve&lt;/button&gt;<br>
+&lt;                /small&gt;<br>
+&lt;              /div&gt;<br>
+&lt;            /div&gt;<br>
+&lt;        /div&gt;<br>
+&lt;    /div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+    <br>  
+.......................................................<br>
+<br>
+22. Miután ezek mind megtörténtek akkor egy teszt alapján egy ng serve -o <br>
+<br>
 `
   };
 
