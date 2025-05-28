@@ -26,11 +26,11 @@ const Home = () => {
     Backend: `
 <h2>Backend JSON</h2><br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
-Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
+Link: https://drive.google.com/file/d/1Uw7ihAqRY-UD6-RLOOFVqWF8TPuUdsbD/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel Proba1</pre>
 <p>
-A tanár szerint akkor járunk a legjobban, ha JSON-t kapunk. Ez a Laravel alapértelmezett állománya.
+
 </p>
 2. Nem kellenek importok.
 <p>
@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
 
 <h2>Backend jegyzet 2</h2><br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
-Link:https://drive.google.com/file/d/1rtchoZVqW3OEIk3-yEYtGI_yJRaeKXhv/view?usp=sharing<br>
+Link:https://drive.google.com/file/d/1nt9LZ61-n6G4SLFIZQRz046wAwlq8PWl/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
 <pre>composer create-project laravel/laravel 01</pre>
 
@@ -469,8 +469,8 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 <h2>Saját</h2>
 <h2>JSON</h2><br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
-Link:https://drive.google.com/file/d/1JmnsgVKVMAngOKN7Tp7821v-GV5YD4K-/view?usp=sharing<br>
-SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
+Link:https://drive.google.com/file/d/1e1-pmXqH3weP1DQbf8-5KmA2iDug4yH3/view?usp=sharing<br>
+SZÓVAL HA JSON A FILE AKKOR íGY MŰKÖDIK<br>
 1. CMD-BEN Projekt generálás C:\Users\Valami\Valami\.2025\.00>composer create-project laravel/laravel Proba2*vagy saját projekt neve<br>
 2. Miután a hosszas letöltés megtörtént belépünk a projekt fileba - cd *projekt neve<br>
 3. Telepítjük az apikat - C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan install:api<br>
@@ -1084,14 +1084,14 @@ private void SaveCsv() {<br>
 <p>
 <h2>Weboldal 2</h2>
 Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
-Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
+Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
 `,
  Minden: `
     <h2>Az egész egyben</h2><br>
-Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
-Link2:https://www.dropbox.com/scl/fi/5rqdl5rttj1ac1nikzr7u/Vizsga.zip?rlkey=wkecsqw6uxu33bntbx5gpmv90&st=oadmcwwk&dl=0<br>
-Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
+Link:https://drive.google.com/drive/folders/1aiSUmTueGeR3hGmxR3YIXU2uTal8yOcN?usp=sharing<br>
+Link 2:https://www.dropbox.com/scl/fo/qqir2zfxp9nxcz239oq9g/AJ2-P8BYgfejmQ6hHDFj53Q?rlkey=xqwqi0bqmlvx07pua3ucf0s95&st=voxwwk06&dl=0<br>
+
 
     <h2>Weboldal</h2><br>
 
