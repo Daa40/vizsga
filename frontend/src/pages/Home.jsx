@@ -28,7 +28,7 @@ const Home = () => {
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link: https://drive.google.com/file/d/1AgzUp1qvtF7SKa44iupnH6-lUvWngBqL/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
-<pre>composer create-project laravel/laravel JsonUpdate</pre>
+<pre>composer create-project laravel/laravel Proba1</pre>
 <p>
 A tanár szerint akkor járunk a legjobban, ha JSON-t kapunk. Ez a Laravel alapértelmezett állománya.
 </p>
@@ -90,7 +90,7 @@ class RentalItem extends Model
 <h3>5. Hozd létre a Seeder-t:</h3>
 <pre>php artisan make:seeder RentItemSeeder</pre>
 <p>Ezután másold be a JSON fájlt a következő helyre:</p>
-<pre>C:\\Users\\Valami\\Valami\\Valami\\20250407\\JsonUpdate\\database\\seeders</pre>
+<pre>C:\Users\Valami\Valami\Valami\.02\Proba1\database\seeders</pre>
 <p>A seeder-be a következő kódot kell másolni:</p>
 <pre>
 use App\Models\RentalItem;
@@ -137,10 +137,10 @@ class DatabaseSeeder extends Seeder
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1rtchoZVqW3OEIk3-yEYtGI_yJRaeKXhv/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
-<pre>composer create-project laravel/laravel Vizsgagyak02</pre>
+<pre>composer create-project laravel/laravel 01</pre>
 
 2. Navigálj a projekt mappájába:
-<pre>cd Vizsgagyak02</pre>
+<pre>cd 01</pre>
 
 3. Futtasd az alábbi parancsot a szükséges API csomag telepítéséhez:
 <pre>php artisan install:api</pre>
@@ -157,7 +157,7 @@ Kérdezni fogja, hogy migráljon-e. A válasz legyen <strong>nem</strong>.
 DB_CONNECTION=mysql<br>
 DB_HOST=127.0.0.1<br>
 DB_PORT=3306<br>
-DB_DATABASE=diak_vizsgagyak<br>
+DB_DATABASE=01<br>
 DB_USERNAME=root<br>
 DB_PASSWORD=
 </pre>
@@ -199,7 +199,7 @@ public function up(): void
 <p>Fontos: A migrációhoz futtatni kell a XAMPP-ot!</p>
 
 9. Másold a .csv fájlokat a megfelelő helyre a projekt könyvtárba:
-<pre>C:\Users\Diak\Desktop\Valami\_20250331\Vizsgagyak02\storage\app\private\public</pre>
+<pre>C:\Users\Valami\Valami\Valami\.2025\.01\storage\app\private\public</pre>
 <p>Én hozom létre ezt a public mappát!</p>
 
 10. A következő csomagot kell telepítened a CSV fájlok kezeléséhez:
@@ -471,14 +471,14 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1JmnsgVKVMAngOKN7Tp7821v-GV5YD4K-/view?usp=sharing<br>
 SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
-1. CMD-BEN Projekt generálás C:\valami\valami\valami\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
+1. CMD-BEN Projekt generálás C:\Users\Valami\Valami\.2025\.00>composer create-project laravel/laravel Proba2*vagy saját projekt neve<br>
 2. Miután a hosszas letöltés megtörtént belépünk a projekt fileba - cd *projekt neve<br>
-3. Telepítjük az apikat - C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan install:api<br>
+3. Telepítjük az apikat - C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan install:api<br>
             Itt nem migrálunk szóval amikor kérdezi hogy migráljon akkor N betű vagyis NO<br>
 4. Itt egy code . de előtte még a .env-ben beírjuk az adatbázis nevét átírjuk a sqlite-ot mysqlre<br>
-5. Králunk egy migrációs táblát C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:migration create_rental_items_table<br>
-6. Králunk egy modelt C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:model RentalItem<br>
-7. Králunk egy seedert C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:seeder RentalItemSeeder<br>
+5. Králunk egy migrációs táblát C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan make:migration create_rental_items_table<br>
+6. Králunk egy modelt C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan make:model RentalItem<br>
+7. Králunk egy seedert C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan make:seeder RentalItemSeeder<br>
 <p>
 5/1. A create_rental_items_table bent van a migrationsban ami így kell hogy kinézzen <br>
 <?php<br>
@@ -585,8 +585,8 @@ class DatabaseSeeder extends Seeder<br>
     }<br>
 }<br>
 <p>
-8. Miután ezek mind megvannak a migrálni kell C:\valami\valami\valami\_20250312\_0409\VizsgaGyakorlo>php artisan migrate ezzel létrejön az adatbázis<br>
-9. De az adatbázist fel kell tölteni adattal ahhoz viszont alapvető dolog hogy a JSON formátumú file legyen a database könyvtárban és ezt adjuk le C:\valami\valami\valami\_20250312\_0409\VizsgaGyakorlo>php artisan db:seed<br>
+8. Miután ezek mind megvannak a migrálni kell C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan migrate ezzel létrejön az adatbázis<br>
+9. De az adatbázist fel kell tölteni adattal ahhoz viszont alapvető dolog hogy a JSON formátumú file legyen a database könyvtárban és ezt adjuk le C:\Users\Valami\Valami\.2025\.00\Proba2>php artisan db:seed<br>
 <p>
 
   `,
@@ -2618,7 +2618,7 @@ import { HomeComponent } from './home/home.component';<br>
 -----------------------------------<br>
 <br>
 17. Miután ez megtörtént a projekt public mappájában kell egy új mappát létrehozni ami az assets és ide kerülnek a képek <br>
-C:\Users\Desktop\Programozás jegyzetek\Frontend\Frontend\OfficeFrontend\public<br>
+C:\Users\Desktop\Valami\Frontend\Frontend\OfficeFrontend\public<br>
 <br>
 18. Ezután a base.service.ts-be kell a konstruktorba írni és így kell kinézzen az egész <br>
 ----------------------------------------------------<br>
