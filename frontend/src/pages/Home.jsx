@@ -1085,7 +1085,6 @@ private void SaveCsv() {<br>
 <h2>Weboldal 2</h2>
 Link:https://drive.google.com/file/d/1r4YmNqfXmEAOKbgMdapn8YD9tt9CRQ96/view?usp=sharing<br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
-Link3:https://www.dropbox.com/scl/fo/law76gszo8up9l7x9gqxw/ALbvBTB90JSqfCYDV4KWELY?rlkey=w0odrdkp5vytlub2se3nc3drj&st=t2asp8ug&dl=0<br>
 `,
  Minden: `
     <h2>Az egész egyben</h2><br>
