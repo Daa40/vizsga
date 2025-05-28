@@ -90,7 +90,7 @@ class RentalItem extends Model
 <h3>5. Hozd létre a Seeder-t:</h3>
 <pre>php artisan make:seeder RentItemSeeder</pre>
 <p>Ezután másold be a JSON fájlt a következő helyre:</p>
-<pre>C:\\Users\\Diak\\Desktop\\TóthDániel\\20250407\\JsonUpdate\\database\\seeders</pre>
+<pre>C:\\Users\\Valami\\Valami\\Valami\\20250407\\JsonUpdate\\database\\seeders</pre>
 <p>A seeder-be a következő kódot kell másolni:</p>
 <pre>
 use App\Models\RentalItem;
@@ -199,7 +199,7 @@ public function up(): void
 <p>Fontos: A migrációhoz futtatni kell a XAMPP-ot!</p>
 
 9. Másold a .csv fájlokat a megfelelő helyre a projekt könyvtárba:
-<pre>C:\Users\Diak\Desktop\TóthDániel\_20250331\Vizsgagyak02\storage\app\private\public</pre>
+<pre>C:\Users\Diak\Desktop\Valami\_20250331\Vizsgagyak02\storage\app\private\public</pre>
 <p>Én hozom létre ezt a public mappát!</p>
 
 10. A következő csomagot kell telepítened a CSV fájlok kezeléséhez:
@@ -471,14 +471,14 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1JmnsgVKVMAngOKN7Tp7821v-GV5YD4K-/view?usp=sharing<br>
 SZÓVAL HA JSON FILE VAN A VIZSGÁN AKKOR íGY MŰKÖDIK<br>
-1. CMD-BEN Projekt generálás C:\Users\Diak\Desktop\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
+1. CMD-BEN Projekt generálás C:\valami\valami\valami\.20250312\.0409>composer create-project laravel/laravel VizsgaGyakorlo*vagy saját projekt neve<br>
 2. Miután a hosszas letöltés megtörtént belépünk a projekt fileba - cd *projekt neve<br>
-3. Telepítjük az apikat - C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan install:api<br>
+3. Telepítjük az apikat - C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan install:api<br>
             Itt nem migrálunk szóval amikor kérdezi hogy migráljon akkor N betű vagyis NO<br>
 4. Itt egy code . de előtte még a .env-ben beírjuk az adatbázis nevét átírjuk a sqlite-ot mysqlre<br>
-5. Králunk egy migrációs táblát C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:migration create_rental_items_table<br>
-6. Králunk egy modelt C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:model RentalItem<br>
-7. Králunk egy seedert C:\Users\Diak\Desktop\.20250312\.0409\VizsgaGyakorlo>php artisan make:seeder RentalItemSeeder<br>
+5. Králunk egy migrációs táblát C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:migration create_rental_items_table<br>
+6. Králunk egy modelt C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:model RentalItem<br>
+7. Králunk egy seedert C:\valami\valami\valami\.20250312\.0409\VizsgaGyakorlo>php artisan make:seeder RentalItemSeeder<br>
 <p>
 5/1. A create_rental_items_table bent van a migrationsban ami így kell hogy kinézzen <br>
 <?php<br>
@@ -585,8 +585,8 @@ class DatabaseSeeder extends Seeder<br>
     }<br>
 }<br>
 <p>
-8. Miután ezek mind megvannak a migrálni kell C:\Users\Diak\Desktop\_20250312\_0409\VizsgaGyakorlo>php artisan migrate ezzel létrejön az adatbázis<br>
-9. De az adatbázist fel kell tölteni adattal ahhoz viszont alapvető dolog hogy a JSON formátumú file legyen a database könyvtárban és ezt adjuk le C:\Users\Diak\Desktop\_20250312\_0409\VizsgaGyakorlo>php artisan db:seed<br>
+8. Miután ezek mind megvannak a migrálni kell C:\valami\valami\valami\_20250312\_0409\VizsgaGyakorlo>php artisan migrate ezzel létrejön az adatbázis<br>
+9. De az adatbázist fel kell tölteni adattal ahhoz viszont alapvető dolog hogy a JSON formátumú file legyen a database könyvtárban és ezt adjuk le C:\valami\valami\valami\_20250312\_0409\VizsgaGyakorlo>php artisan db:seed<br>
 <p>
 
   `,
@@ -862,6 +862,162 @@ class DatabaseSeeder extends Seeder<br>
     <p>
     Ezzel beolvassuk a fájlt, és megjelenítjük a combobox-ban a rendszámokat.
     </p>
+    <h2>Desktop 2</h2><br>
+    Link: https://drive.google.com/file/d/1HYDmS5K2r714wockjEsKTv2RJW07CqMB/view?usp=sharing
+    <p>
+    1. Windows Forms App (.Net Framework nélkül)<br>
+<br>
+2. Kell egy Model mappa és abban lesz az osztály a beolvasáshoz.<br>
+<br>
+3. Kell egy Data mappa, abban lesz a .csv fájl (Drag and Drop)<br>
+<br>
+4. A .csv-t be kell másolni a Debug-on belülre is.<br>
+Előtte érdemes egyszer ráindítani a projektre, hogy legenerálja a fájlokat.<br>
+<br>
+5. Most jön az osztály.<br>
+Utána pedig a konstruktor.<br>
+<br>
+A konstruktor neve ugyanaz legyen, mint az osztályé!!<br>
+Mindent kell parse-olni, ami nem string, mert string típusú tömböt hosztunk létre.<br>
+<br>
+internal class Office_cost<br>
+{<br>
+    //id;officename;datum;kategoria;osszeg;megjegyzes<br>
+<br>
+    public int Id { get; set; }<br>
+    public string OfficeName { get; set; }<br>
+    public DateTime Datum { get; set; }<br>
+    public string Kategoria { get; set; }<br>
+    public decimal Osszeg { get; set; }<br>
+    public string Megjegyzes { get; set; }<br>
+<br>
+    public Office_cost(string line) {<br>
+        string[] row = line.Split(";");<br>
+        Id = int.Parse(row[0]);<br>
+        OfficeName = row[1];<br>
+        Datum = DateTime.Parse(row[2]);<br>
+        Kategoria = row[3];<br>
+        Osszeg = decimal.Parse(row[4]);<br>
+        Megjegyzes = row[5];<br>
+    }<br>
+<br>
+    public Office_cost() { }<br>
+}<br>
+<br>
+6. Utána a Form1.cs-be kell beleírni a szükséges dolgokat a fájlbeolvasáshoz.<br>
+<br>
+public Form1()<br>
+{<br>
+    InitializeComponent();<br>
+    LoadCsv();<br>
+}<br>
+<br>
+List<Office_cost> officeCosts = new List<Office_cost>();<br>
+private void LoadCsv() {<br>
+    foreach (var item in File.ReadAllLines("office_costs_2024.csv").Skip(1))<br>
+    {<br>
+        officeCosts.Add(new Office_cost(item));<br>
+    }<br>
+}<br>
+<br>
+Ezzel kész a fájl beolvasása.(Ez volt az első feladat.)<br>
+<br>
+7. Utána a Form1.cs-ben fel kell pakolni az elemeket. A nevet beállítjuk. Ezt lehet kódból is és kézzel is.<br>
+<br>
+Most kódból csináljuk meg.<br>
+<br>
+ public Form1()<br>
+ {<br>
+     InitializeComponent();<br>
+     Title();<br>
+     LoadCsv();<br>
+ }<br>
+<br>
+ List<Office_cost> officeCosts = new List<Office_cost>();<br>
+ private void LoadCsv() {<br>
+     foreach (var item in File.ReadAllLines("office_costs_2024.csv").Skip(1))<br>
+     {<br>
+         officeCosts.Add(new Office_cost(item));<br>
+     }<br>
+ }<br>
+<br>
+ private void Title() {<br>
+     Text = "Office Cost Manager";<br>
+     Width = 900;<br>
+     Height = 600;<br>
+ }<br>
+<br>
+8. 3. Az ablakra felpakolni elemeket a View -> Toolbox-al lehet.<br>
+<br>
+9. Kell egy DataGridView amit Dock-oltatni kell és az AutoSizeColumnsMode = Fill.<br>
+<br>
+Kell két Textbox, egy DateTimePicker, egy ComboBox és egy NumericUpDown. Meg egy Button.<br>
+<br>
+10. Miután feltettük a dolgokat, be kell tölteni az adatokat a táblázatba.<br>
+Ehhez is kell egy függvény a Form1.cs-be.<br>
+<br>
+<br>
+ public Form1()<br>
+ {<br>
+     InitializeComponent();<br>
+     Title();<br>
+     LoadCsv();<br>
+     RefreshGrid();<br>
+ }<br>
+<br>
+ List<Office_cost> officeCosts = new List<Office_cost>();<br>
+ private void LoadCsv() {<br>
+     foreach (var item in File.ReadAllLines("office_costs_2024.csv").Skip(1))<br>
+     {<br>
+         officeCosts.Add(new Office_cost(item));<br>
+     }<br>
+ }<br>
+<br>
+ private void Title() {<br>
+     Text = "Office Cost Manager";<br>
+     Width = 900;<br>
+     Height = 600;<br>
+ }<br>
+<br>
+ private void RefreshGrid() {<br>
+     dgv.DataSource = null;<br>
+     dgv.DataSource = officeCosts;<br>
+ }<br>
+<br>
+11. Combobox -> jobb gomb: Edit Items... és ide kell beírni, hogy mik szerepeljenek benne.<br>
+<br>
+12. Aztán megcsináljuk, hogy az Add gomb működjön.<br>
+<br>
+private void RefreshGrid()<br>
+{<br>
+    dgv.DataSource = null;<br>
+    dgv.DataSource = officeCosts;<br>
+}<br>
+<br>
+private void button1_Click(object sender, EventArgs e)<br>
+{<br>
+    int officeId = officeCosts.Any() ? officeCosts.Max(i => i.Id)+1 : 1;<br>
+    var newOfficeCost = new Office_cost<br>
+    {<br>
+        Id = officeId,<br>
+        OfficeName = textBox1.Text,<br>
+        Datum = dateTimePicker1.Value,<br>
+        Kategoria = comboBox1.SelectedItem.ToString(),<br>
+        Osszeg = numericUpDown1.Value,<br>
+        Megjegyzes = textBox2.Text<br>
+    };<br>
+    officeCosts.Add(newOfficeCost);<br>
+    RefreshGrid();<br>
+}<br>
+<br>
+13. Végül megcsináljuk, hogy az adatok elmentődjenek a fájlba.Ezt is a Form1.cs-ben kell persze.<br>
+<br>
+private void SaveCsv() {<br>
+    var lines = new List<string> { "id;officename;datum;kategoria;osszeg;megjegyzes" };<br>
+    lines.AddRange(officeCosts.Select(x => $"{x.Id};{x.OfficeName};{x.Datum:yyyy-MM-dd};{x.Kategoria};{x.Osszeg};{x.Megjegyzes}"));<br>
+    File.WriteAllLines("office_costs_2024.csv", lines);<br>
+}<br>
+<p>
   `,
   Weboldal: `
     <h2>Weboldal</h2>
@@ -1705,7 +1861,7 @@ class Program<br>
 ----------------------------------------------------------------------<br>
 <br>
 <br>
-9. A .csv filet 2 helyre lehet tenni. Az egyik ha közvetlenül csak simán bedobod a program.cs és a berles.cs fileok közé. Vagy ha ezen az elérési útvonalon beírod C:\Users\Benjm\source\repos\OfficeRentals\OfficeRentals\bin\Debug\net8.0<br>
+9. A .csv filet 2 helyre lehet tenni. Az egyik ha közvetlenül csak simán bedobod a program.cs és a berles.cs fileok közé. Vagy ha ezen az elérési útvonalon beírod C:\valami\valami\source\repos\OfficeRentals\OfficeRentals\bin\Debug\net8.0<br>
 <br>
 <br>
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
@@ -1846,7 +2002,7 @@ A teszt az officerental szerint működik<br>
 <br>
 6. Create<br>
 <br>
-7. Miután kreálódott a projekt mivel van 2 csv ezeket ide kell helyezni (mindkettőt) C:\Users\Benjm\source\repos\CarsConsole\CarsConsole\bin\Debug\net8.0<br>
+7. Miután kreálódott a projekt mivel van 2 csv ezeket ide kell helyezni (mindkettőt) C:\valami\valami\source\repos\CarsConsole\CarsConsole\bin\Debug\net8.0<br>
 <br>
 8. A program.cs kívül két class-t kell csinálni <br>
 <br>
