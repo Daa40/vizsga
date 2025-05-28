@@ -466,7 +466,7 @@ Ezután kipróbálhatod a végpontokat és a szabályokat.
 
 <p>Ha minden rendben van, a szit.hu-n elérhető jegyzetek és példák segítenek tovább!</p>
 <p>
-<h2>Saját</h2>
+<h2>Minden</h2>
 <h2>JSON</h2><br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1e1-pmXqH3weP1DQbf8-5KmA2iDug4yH3/view?usp=sharing<br>
