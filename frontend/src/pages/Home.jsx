@@ -133,7 +133,7 @@ class DatabaseSeeder extends Seeder
 <h3>7. Futtasd a seeder-t:</h3>
 <pre>php artisan db:seed</pre>
 
-<h2>Backend jegyzet 2</h2><br>
+<h2>Backend 2</h2><br>
 Főlink:https://drive.google.com/drive/folders/1DlgW65MCmiBZ3KYmx0BeVt1SvmKJjXB2?usp=sharing<br>
 Link:https://drive.google.com/file/d/1nt9LZ61-n6G4SLFIZQRz046wAwlq8PWl/view?usp=sharing<br>
 1. Először hozz létre egy új Laravel projektet a következő parancs futtatásával:
@@ -2912,7 +2912,7 @@ export class BaseService {<br>
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup">
-            <h2>Jegyzet</h2>
+            <h2>Részek</h2>
             <div
               className="popup-content"
               dangerouslySetInnerHTML={{ __html: note }}
