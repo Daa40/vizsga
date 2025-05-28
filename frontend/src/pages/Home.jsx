@@ -1094,7 +1094,7 @@ Link 2:https://www.dropbox.com/scl/fo/qqir2zfxp9nxcz239oq9g/AJ2-P8BYgfejmQ6hHDFj
 
     <h2>Weboldal</h2><br>
 
-Az officerental alapján készült<br>
+Az or <br>
 
 1. Létre kell hozni egy új mappát aminek lehet bármi a neve <br>
 
@@ -1202,7 +1202,7 @@ h1, h2 {<br>
 &lt;/style&gt;<br>
 
 <h2>DESKTOP</h2>
-Az office rentals alapján készült<br>
+Az or<br>
 <br>
 1. A létrehozáshoz két verzió lehetséges. Amikor a console alkalmazást használva tovább fejlesztjük és lesz egy desktopos alkalmazás is pluszba VAGY <br>
 ha teljesen egy új projektet generálunk.<br>
@@ -1392,7 +1392,7 @@ megmutattott módon kreálunk egy projektet<br>
 3. Ennyi<br>
 
 <h2>Api</h2>
-Az office rentals szerint <br>
+Az or <br>
 <br>
 1. A visual studio megnyitása után egy új projekt generálása<br>
 <br>
@@ -1669,7 +1669,7 @@ namespace OfficesAPI<br>
 <br>
 <p>
 <h2>Console 1 csv</h2>
-A teszt az officerental szerint működik<br>
+Az or<br>
 <br>
 1. Microsoft Visual Studio nyitása<br>
 <br>
@@ -1875,7 +1875,7 @@ NEM BIZTOS HOGY TÖKÉLETES A MEGOLDÁS<br>
 <br>
 <br>
 <br>
-A teszt az officerental szerint működik<br>
+Az or<br>
 <br>
 1. Microsoft Visual Studio nyitása <br>
 <br>
@@ -1987,7 +1987,7 @@ namespace RentOffices<br>
 9. A .csv filet 2 helyre lehet tenni. Az egyik ha közvetlenül csak simán bedobod a program.cs és a berles.cs fileok közé. Vagy ha ezen az elérési útvonalon beírod C:\Users\GGGGG\source\repos\OfficeRentals\OfficeRentals\bin\Debug\net8.0<br>
 <p>
 <h2>Console 2 csv</h2>
-A teszt az officerental szerint működik<br>
+A or <br>
 <br>
 1. Microsoft Visual Studio nyitása <br>
 <br>
@@ -2288,7 +2288,7 @@ namespace CarBookingApp<br>
 ----------------------------------------------------------------------------------- <br>
 <p>
 <h2>Frontend</h2><br>
-Az officesrental alapján készült <br>
+Az or <br>
 <br>
 1. Az első hogy csinálni kell egy mappát bármilyen névvel aztán a mappán belül egy cmd nyitása<br>
 <br>
